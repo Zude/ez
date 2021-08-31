@@ -169,6 +169,25 @@ static void processError(char ProcessName[], INT8U error) {
 	}
 }
 
+static void wurstWenden(WurstNode wurst) {
+
+	switch (wurst->value.aktuelleSeite)
+	{
+	case 1:
+		if (wurst->value.seite1 > 80) {
+			wurst->value.aktuelleSeite = 2;
+		} break;
+	case 2:if (wurst->value.seite2 > 80) {
+		wurst->value.aktuelleSeite = 3;
+	} break;
+	case 3: if (wurst->value.seite3 > 80) {
+		wurst->value.aktuelleSeite = 4;
+	} break;
+	default:
+		break;
+	}
+}
+
 /*
  *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
  * 	es auf dem Bildschirm aus.
@@ -193,6 +212,7 @@ static void Grillmeister(void* p_arg) {
 
 				WurstNode wurstToCheck = GetWurstAtIndex(index);
 				// drehen routine
+				wurstWenden(wurstToCheck);
 			}
 			
 			OSTimeDlyHMSM(0, 0, 0, 100);
@@ -206,6 +226,8 @@ static void Grillmeister(void* p_arg) {
 	}
 }
 
+
+
 /*
  *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
  * 	es auf dem Bildschirm aus.
@@ -218,14 +240,42 @@ static void Physik(void* p_arg) {
 
 	while (1) {
 
-		int count = 0;
+		int count = 1;
 		WurstNode current = grill;
 
 		while (current != NULL) {
 
+			int aktuelleSeite;
+			int braunung = 0;
+
 			// wende Physik an
-			current->value.seite1 += 10;
-			printf("Wurst %d ist zu %d gebraeunt!", count, current->value.seite1);
+			
+			switch (current->value.aktuelleSeite)
+			{
+			case 1:
+				aktuelleSeite = 1;
+				current->value.seite1 += 10;
+				braunung = current->value.seite1;
+				 break;
+			case 2:
+				aktuelleSeite = 2;
+				current->value.seite2 += 10;
+				braunung = current->value.seite2;
+			 break;
+			case 3: 
+				aktuelleSeite = 3;
+				current->value.seite3 += 10;
+				braunung = current->value.seite3; 
+				break;
+			case 4:
+				aktuelleSeite = 4;
+				current->value.seite4 += 10;
+				braunung = current->value.seite4; break;
+			default:
+				break;
+			}
+
+			printf("Wurst %d, Seite %d ist zu %d gebraeunt!", count, aktuelleSeite, braunung);
 			count++;
 			current = current->next;
 		}
