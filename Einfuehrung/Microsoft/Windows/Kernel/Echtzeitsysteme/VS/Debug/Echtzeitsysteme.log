@@ -1,1 +1,10 @@
-﻿  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe
+﻿  app.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(201,13): warning C4047: '=': 'INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(217,8): warning C4101: 'err': unreferenced local variable
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(269,43): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(269,39): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(273,44): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(273,40): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(280,13): warning C4047: '=': 'INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(93): warning C4715: 'GetWurstAtIndex': not all control paths return a value
+  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe

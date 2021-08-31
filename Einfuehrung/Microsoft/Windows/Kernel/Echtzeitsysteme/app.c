@@ -16,7 +16,11 @@
 *********************************************************************************************************
 */
 struct Wurst {
+	int aktuelleSeite;
 	int seite1;
+	int seite2;
+	int seite3;
+	int seite4;
 };
 
 struct Node {
@@ -96,6 +100,10 @@ static WurstNode createWurst() {
 
 	newNode->next = kuehlbox;
 	newNode->value.seite1 = 0;
+	newNode->value.seite2 = 0;
+	newNode->value.seite3 = 0;
+	newNode->value.seite4 = 0;
+	newNode->value.aktuelleSeite = 1;
 
 	kuehlbox = newNode;
 
@@ -140,6 +148,7 @@ void MyTmrCallbackFnct1(void* p_arg)
 	OSTimeDlyHMSM(0, 0, 1, 0);
 	OSSemPost(SemFleischer);
 	test = 1;
+
 }
 
 
