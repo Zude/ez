@@ -19,13 +19,6 @@
 
 /*
 *********************************************************************************************************
-*                                            LOCAL DEFINES
-*********************************************************************************************************
-*/
-
-
-/*
-*********************************************************************************************************
 *                                       LOCAL GLOBAL VARIABLES
 *********************************************************************************************************
 */
@@ -40,8 +33,6 @@ OS_STK	FireFighterTaskStk[FIREFIGHTER_TASK_STK_SIZE];
 *                                         FUNCTIONS
 *********************************************************************************************************
 */
-
-
 
 static void processError(char ProcessName[], INT8U error) {
 
@@ -63,8 +54,8 @@ static void processError(char ProcessName[], INT8U error) {
 /*
 	Main
 */
-int	main(void)
-{
+int	main(void) {
+
 #if OS_TASK_NAME_EN > 0u
 	CPU_INT08U  os_err;
 #endif
@@ -77,17 +68,21 @@ int	main(void)
 	CPU_Init();                                                 /* Initialize the uC/CPU								*/
 	OSInit();                                                   /* Initialize uC/OS-II                                  */
 
-	// Speicher initialisieren, spaeter dynamisch aenderbar machen
 	INT8U partErr;
+
+	// Speicher Initialisieren
 	PartitionPtr = OSMemCreate(Partition, 100, 64, &partErr);
 
+	// Queues Initialisieren
 	msgQueueButcher = OSQCreate(&messageStorageButcher, 10);
 	msgQueueGriller = OSQCreate(&messageStorageGriller, 10);
 
-	 //Fleischer initialisieren
+	// Semaphoren Initialisieren
 	SemFleischer = OSSemCreate(1);
 	SemBox = OSSemCreate(0);
 	SemGrill = OSSemCreate(0);
+
+	 //Fleischer initialisieren
 	OSTaskCreate(Fleischer,
 		(void*)0,
 		&ButcherTaskStk[BUTCHER_TASK_STK_SIZE - 1],
