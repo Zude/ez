@@ -62,6 +62,10 @@ volatile int currentTemp = 150;
  int tempSetFac = 10;
 
  boolean entzuendet = 0;
+
+
+ static  OS_EVENT* msgqueue;
+ static  void* MessageStorage[100];
 /*
 *********************************************************************************************************
 *                                         FUNCTION PROTOTYPES
@@ -212,7 +216,7 @@ static void Grillmeister(void* p_arg) {
 			int grillSize = getCount(grill);
 			// zufallszahl ermitteln
 
-			char hi = (char*)OSMboxAccept(MSG_box);
+			char hi = (char*)OSQAccept(msgqueue, &err);
 			printf("YO2: %c\n", hi);
 
 			if (grillSize > 0)
@@ -251,8 +255,9 @@ static void Physik(void* p_arg) {
 
 		while (key != 'o' && key != 'p') {
 
-		char hi = (char*)OSMboxAccept(MSG_box);
-		printf("YO: %c\n", hi);
+	//	char hi = (char*)OSMboxQuery(MSG_box);
+			OSQPost(msgqueue, (void*)'c');
+		//printf("YO: %c\n", hi);
 			int count = 1;
 			WurstNode current = grill;
 
@@ -411,6 +416,7 @@ int	main(void)
 	PartitionPtr = OSMemCreate(Partition, 100, 64, &partErr);
 
 	MSG_box = OSMboxCreate((void*)NULL);
+	msgqueue = OSQCreate(&MessageStorage, 10);
 
 	 //Fleischer initialisieren
 	wuersteInKuehlbox = 0;
