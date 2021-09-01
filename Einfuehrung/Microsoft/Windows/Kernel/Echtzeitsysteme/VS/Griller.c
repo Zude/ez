@@ -1,3 +1,8 @@
+/*
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*/
 #include  <cpu.h>
 #include  <lib_mem.h>
 #include  <os.h>
@@ -6,11 +11,27 @@
 #include  "CoolingBox.h"
 #include  "Sausage.h"
 
+/*
+*********************************************************************************************************
+*                                       GLOBAL VARIABLES
+*********************************************************************************************************
+*/
 volatile int currentTemp = 150;
 int tempFac = 100;
 int tempSetFac = 10;
 
-static void wurstWenden(SausageNode wurst) {
+/*
+*********************************************************************************************************
+*                                       Functions
+*********************************************************************************************************
+*/
+
+/*
+ *	Wendet die Wurst
+ *
+ * 	Arguments : wurst Wurst die gewendet werden soll
+ */
+void wurstWenden(SausageNode wurst) {
 
 	switch (wurst->value.currentSide)
 	{
@@ -34,12 +55,6 @@ static void wurstWenden(SausageNode wurst) {
 	}
 }
 
-/*
- *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
- * 	es auf dem Bildschirm aus.
- *
- * 	Arguments : p_arg nicht verwendet
- */
  void Griller(void* p_arg) {
 
 	INT8U err;
