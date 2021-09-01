@@ -25,6 +25,11 @@ void MyTmrCallbackFnct1(void* p_arg) {
 
 }
 
+static void printState() {
+	PC_DispStr(0, 0, "##############################################################", 5);
+	PC_DispStr(0, 1, "##############################################################", 5);
+}
+
 /*
  *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
  * 	es auf dem Bildschirm aus.
@@ -37,6 +42,9 @@ void MyTmrCallbackFnct1(void* p_arg) {
 
 	while (1) {
 
+		printState();
+	
+		//PC_DispClrScr();
 		// Input des Users per MQueue checken
 		char userInput = (char*)OSQAccept(msgQueueButcher, &err);
 

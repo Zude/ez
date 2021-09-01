@@ -56,6 +56,7 @@ OS_EVENT* MSG_box;
 
 
 
+
 static void processError(char ProcessName[], INT8U error) {
 
 	switch (error) {
@@ -96,6 +97,8 @@ int	main(void)
 		(INT8U*)"Creator Task",
 		&os_err);
 #endif
+
+	
 
 	// Speicher initialisieren, spaeter dynamisch aenderbar machen
 	INT8U partErr;
@@ -142,3 +145,4 @@ int	main(void)
 		;
 	}
 }
+
