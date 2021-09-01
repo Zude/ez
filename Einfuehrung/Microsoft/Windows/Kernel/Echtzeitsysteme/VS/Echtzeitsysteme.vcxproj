@@ -169,6 +169,10 @@
     <ClCompile Include="Butcher.h" />
     <ClCompile Include="Griller.h" />
     <ClCompile Include="Griller.c" />
+    <ClCompile Include="Physics.c" />
+    <ClCompile Include="Physics.h" />
+    <ClCompile Include="FireFighter.h" />
+    <ClCompile Include="FireFighter.c" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />

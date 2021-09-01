@@ -217,6 +217,18 @@
     <ClCompile Include="Griller.c">
       <Filter>Source Files\App\Tasks</Filter>
     </ClCompile>
+    <ClCompile Include="Physics.c">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.h">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="FireFighter.h">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="FireFighter.c">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />
