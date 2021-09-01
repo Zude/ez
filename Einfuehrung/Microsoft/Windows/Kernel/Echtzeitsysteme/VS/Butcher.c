@@ -95,13 +95,8 @@ void MyTmrCallbackFnct1(void* p_arg) {
 
 }
 
-/*
- *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
- * 	es auf dem Bildschirm aus.
- *
- * 	Arguments : p_arg nicht verwendet
- */
- void Fleischer(void* p_arg) {
+
+ void Butcher(void* p_arg) {
 
 	INT8U err;
 

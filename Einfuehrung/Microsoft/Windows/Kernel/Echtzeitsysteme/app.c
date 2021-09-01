@@ -83,7 +83,7 @@ int	main(void) {
 	SemGrill = OSSemCreate(0);
 
 	 //Fleischer initialisieren
-	OSTaskCreate(Fleischer,
+	OSTaskCreate(Butcher,
 		(void*)0,
 		&ButcherTaskStk[BUTCHER_TASK_STK_SIZE - 1],
 		BUTCHER_TASK_PRIORITY);
