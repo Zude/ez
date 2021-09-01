@@ -27,6 +27,7 @@
 */
 OS_EVENT* SemFleischer;
 OS_EVENT* SemBox;
+OS_EVENT* SemGrill;
 
 OS_STK	FleischerTaskStk[FLEISCHER_TASK_STK_SIZE];
 OS_STK	GrillmeisterTaskStk[GRILLMEISTER_TASK_STK_SIZE];
@@ -39,7 +40,7 @@ INT8U	Partition[100][32];
 OS_EVENT* MSG_box;
 
 
-volatile SausageNode grill;
+
 
 OS_TMR  *SausageTimer;
 
@@ -101,18 +102,7 @@ static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* p
 	OSMemPut(parition, toBeRemoved);
 }
 
-static void transferWurst()
-{
-	SausageNode transfer = coolingBox->next;
 
-	coolingBox->next = grill;
-	grill = coolingBox;
-
-	coolingBox = transfer;
-	printf("Grillmeister: Entnehme Wurst aus Box und plaziere auf Grill!\n");
-	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(coolingBox));
-	printf("Grill: Es sind %d Wuerste auf den Grill!\n", getCount(grill));
-}
 
 void MyTmrCallbackFnct1(void* p_arg)
 {
@@ -156,14 +146,19 @@ static void wurstWenden(SausageNode wurst) {
 	case 1:
 		if (wurst->value.sideOne > 80) {
 			wurst->value.currentSide = 2;
+			OSTimeDlyHMSM(0, 0, 5, 0);
 		} break;
 	case 2:if (wurst->value.sideTwo > 80) {
 		wurst->value.currentSide = 3;
+		OSTimeDlyHMSM(0, 0, 5, 0);
 	} break;
 	case 3: if (wurst->value.sideThree > 80) {
 		wurst->value.currentSide = 4;
+		OSTimeDlyHMSM(0, 0, 5, 0);
 	} break;
 	default:
+		// delete
+		OSTimeDlyHMSM(0, 0, 10, 0);
 		break;
 	}
 }
@@ -189,8 +184,11 @@ static void Grillmeister(void* p_arg) {
 			transferWurst(coolingBox, grill);
 			OSSemPost(SemBox);
 			OSTimeDlyHMSM(0, 0, 5, 0);
-		}
-		else {
+		} else if (userInput == 'o') {
+			currentTemp += tempSetFac;
+		} else if (userInput == 'p') {
+			currentTemp -= tempSetFac;
+		} else {
 			// kontrolliere Wurst 
 			int grillSize = getCount(grill);
 			// zufallszahl ermitteln
@@ -198,15 +196,22 @@ static void Grillmeister(void* p_arg) {
 			//SemFleischer2
 			if (grillSize > 0)
 			{
+
 				int index = rand() % ((grillSize - 1) + 1 - 0) + 0;
 
 				SausageNode wurstToCheck = GetWurstAtIndex(index);
-				// drehen routine
+
+				OSSemPend(SemGrill, 0, &err);
 				wurstWenden(wurstToCheck);
+				OSSemPost(SemGrill);
+
+				OSTimeDlyHMSM(0, 0, 0, 100);
 			}
 
 			OSTimeDlyHMSM(0, 0, 0, 100);
 		}
+
+		OSTimeDlyHMSM(0, 0, 0, 100);
 	}
 }
 
@@ -383,6 +388,7 @@ int	main(void)
 	 //Fleischer initialisieren
 	SemFleischer = OSSemCreate(1);
 	SemBox = OSSemCreate(0);
+	SemGrill = OSSemCreate(0);
 	OSTaskCreate(Fleischer,
 		(void*)0,
 		&FleischerTaskStk[FLEISCHER_TASK_STK_SIZE - 1],

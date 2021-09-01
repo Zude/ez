@@ -32,6 +32,7 @@
 *********************************************************************************************************
 */
 extern volatile SausageNode coolingBox;
+extern volatile SausageNode grill;
 
 /*
 *********************************************************************************************************
@@ -44,7 +45,7 @@ extern volatile SausageNode coolingBox;
  * 	Arguments : p_arg nicht verwendet
  */
 SausageNode createWurst(OS_MEM* partitionPtr);
-
+void transferWurst();
 /*
 *********************************************************************************************************
 *                                             MODULE END

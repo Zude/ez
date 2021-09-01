@@ -1,6 +1,7 @@
 #include  "Sausage.h"
 
 volatile SausageNode coolingBox;
+volatile SausageNode grill;
 
 SausageNode createWurst(OS_MEM* partitionPtr) {
 
@@ -21,4 +22,17 @@ SausageNode createWurst(OS_MEM* partitionPtr) {
 	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(coolingBox));
 
 	return coolingBox;
+}
+
+void transferWurst()
+{
+	SausageNode transfer = coolingBox->next;
+
+	coolingBox->next = grill;
+	grill = coolingBox;
+
+	coolingBox = transfer;
+	printf("Grillmeister: Entnehme Wurst aus Box und plaziere auf Grill!\n");
+	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(coolingBox));
+	printf("Grill: Es sind %d Wuerste auf den Grill!\n", getCount(grill));
 }

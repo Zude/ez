@@ -29,6 +29,7 @@ void InputListener(void* p_arg)  {
 		case 'g':
 			OSQPost(msgQueueGriller, (void*)'g');
 			break;
+
 		default:
 			break;
 		}
