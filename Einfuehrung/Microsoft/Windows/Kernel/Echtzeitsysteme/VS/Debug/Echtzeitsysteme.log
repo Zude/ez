@@ -1,10 +1,12 @@
 ﻿  app.c
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(221,13): warning C4047: '=': 'INT16S' differs in levels of indirection from 'void *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(239,8): warning C4101: 'err': unreferenced local variable
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(320,43): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(320,39): warning C4024: 'processError': different types for formal and actual parameter 2
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(324,44): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(324,40): warning C4024: 'processError': different types for formal and actual parameter 2
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(331,13): warning C4047: '=': 'INT16S' differs in levels of indirection from 'void *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(93): warning C4715: 'GetWurstAtIndex': not all control paths return a value
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(224,13): warning C4047: '=': 'volatile INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(301,13): warning C4047: '=': 'volatile INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(242,8): warning C4101: 'err': unreferenced local variable
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(322,25): warning C4090: 'function': different 'volatile' qualifiers
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(334,43): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(334,39): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(338,44): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(338,40): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(345,13): warning C4047: '=': 'volatile INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(96): warning C4715: 'GetWurstAtIndex': not all control paths return a value
   Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe

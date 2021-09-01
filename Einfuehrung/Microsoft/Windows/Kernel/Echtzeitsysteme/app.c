@@ -47,15 +47,18 @@ OS_STK	PhysikTaskStk[PHYSIK_TASK_STK_SIZE];
 OS_MEM* PartitionPtr;
 INT8U	Partition[100][32];
 
-WurstNode kuehlbox;
-WurstNode grill;
+volatile WurstNode kuehlbox;
+volatile WurstNode grill;
 int wuersteInKuehlbox;
 
 OS_TMR  *MyTmr1;
 
-INT16S key;
+volatile INT16S key;
 
 boolean test = 1;
+volatile int currentTemp = 150;
+ int tempFac = 100;
+ int tempSetFac = 10;
 /*
 *********************************************************************************************************
 *                                         FUNCTION PROTOTYPES
@@ -240,46 +243,63 @@ static void Physik(void* p_arg) {
 
 	while (1) {
 
-		int count = 1;
-		WurstNode current = grill;
+
+
+		while (key != 'o' && key != 'p') {
+		
+			int count = 1;
+			WurstNode current = grill;
+
+			int temp = currentTemp / tempFac;
 
 		while (current != NULL) {
 
 			int aktuelleSeite;
 			int braunung = 0;
 
-			// wende Physik an
+			// wende Physik an (temp 150 grad * factor)
 			
 			switch (current->value.aktuelleSeite)
 			{
 			case 1:
 				aktuelleSeite = 1;
-				current->value.seite1 += 10;
+				current->value.seite1 += temp;
 				braunung = current->value.seite1;
 				 break;
 			case 2:
 				aktuelleSeite = 2;
-				current->value.seite2 += 10;
+				current->value.seite2 += temp;
 				braunung = current->value.seite2;
 			 break;
 			case 3: 
 				aktuelleSeite = 3;
-				current->value.seite3 += 10;
+				current->value.seite3 += temp;
 				braunung = current->value.seite3; 
 				break;
 			case 4:
 				aktuelleSeite = 4;
-				current->value.seite4 += 10;
+				current->value.seite4 += temp;
 				braunung = current->value.seite4; break;
 			default:
+				aktuelleSeite = 0;
 				break;
 			}
 
-			printf("Wurst %d, Seite %d ist zu %d gebraeunt!", count, aktuelleSeite, braunung);
+			printf("Wurst %d, Seite %d ist zu %d gebraeunt! \n", count, aktuelleSeite, braunung);
 			count++;
 			current = current->next;
 		}
-		OSTimeDlyHMSM(0, 0, 5, 0);
+		OSTimeDlyHMSM(0, 0, 1, 0);
+		}
+		if (key == 'o') {
+			currentTemp += tempSetFac;
+			printf("Temperatur um %d auf %d erhoeht.\n", tempSetFac, currentTemp);
+		} else {
+			currentTemp -= tempSetFac;
+			printf("Temperatur um %d auf %d verringert.\n", tempSetFac, currentTemp);
+		}
+		key = NULL; 
+		OSTimeDlyHMSM(0, 0, 0, 100);
 	}
 }
 
@@ -297,11 +317,6 @@ static void Fleischer(void* p_arg) {
 
 
 	while (1) {
-
-
-
-
-	
 
 		// Warte das der User w drueckt um eine Wurst zu erzeugen
 		while (!PC_GetKey(&key) || key != 'w') {
