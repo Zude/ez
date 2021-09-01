@@ -181,6 +181,9 @@
     <ClCompile Include="..\app_hooks.c">
       <Filter>Source Files\App</Filter>
     </ClCompile>
+    <ClCompile Include="test.h">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />

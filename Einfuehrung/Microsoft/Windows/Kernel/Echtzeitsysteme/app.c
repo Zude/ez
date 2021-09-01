@@ -8,6 +8,7 @@
 #include  <lib_mem.h>
 #include  <os.h>
 #include  "pc.h"
+#include  "test.h"
 #include  "app_cfg.h"
 
 /*
