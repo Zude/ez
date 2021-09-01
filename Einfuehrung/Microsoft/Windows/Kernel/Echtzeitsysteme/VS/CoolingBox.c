@@ -37,7 +37,7 @@ SausageNode createWurst() {
 	return coolingBox;
 }
 
-void transferWurst()
+void transferSausage()
 {
 	SausageNode transfer = coolingBox->next;
 

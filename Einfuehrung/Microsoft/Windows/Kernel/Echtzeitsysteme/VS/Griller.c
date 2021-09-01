@@ -10,6 +10,7 @@
 #include  "InputListener.h"
 #include  "CoolingBox.h"
 #include  "Sausage.h"
+#include  "Helper.h"
 
 /*
 *********************************************************************************************************
@@ -67,8 +68,9 @@ void turningSausage(SausageNode sausage) {
 		// Wenn der Input korrekt ist, Wurst erzeugen. Sonst schauen ob Box Leer und ggf. Timer starten (60 Sekunden)
 		if (userInput == 'g') {
 			OSSemPend(SemBox, 0, &err);
-			transferWurst(coolingBox, grill);
+			transferSausage(coolingBox, grill);
 			OSSemPost(SemBox);
+			printCurrentState("Fleischer erzeugt Wurst.");
 			OSTimeDlyHMSM(0, 0, 5, 0);
 		}
 		else if (userInput == 'o') {

@@ -57,7 +57,7 @@ extern  boolean entzuendet;
  * 	Arguments : p_arg nicht verwendet
  */
 SausageNode createWurst(OS_MEM* partitionPtr);
-void transferWurst();
+void transferSausage();
 SausageNode GetWurstAtIndex(int index);
 int getCount(SausageNode head);
 static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* parition);
