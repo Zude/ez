@@ -31,8 +31,15 @@
 *                                          Globals
 *********************************************************************************************************
 */
+extern OS_MEM* PartitionPtr;
+extern INT8U	Partition[100][32];
+
 extern volatile SausageNode coolingBox;
 extern volatile SausageNode grill;
+
+extern OS_EVENT* SemFleischer;
+extern OS_EVENT* SemBox;
+extern OS_EVENT* SemGrill;
 
 /*
 *********************************************************************************************************

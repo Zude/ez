@@ -1,13 +1,20 @@
 #include  "Sausage.h"
 
+OS_MEM* PartitionPtr;
+INT8U	Partition[100][32];
+
 volatile SausageNode coolingBox;
 volatile SausageNode grill;
 
-SausageNode createWurst(OS_MEM* partitionPtr) {
+OS_EVENT* SemFleischer;
+OS_EVENT* SemBox;
+OS_EVENT* SemGrill;
+
+SausageNode createWurst() {
 
 	INT8U err;
 
-	SausageNode newNode = OSMemGet(partitionPtr, &err);;
+	SausageNode newNode = OSMemGet(PartitionPtr, &err);;
 
 	newNode->next = coolingBox;
 	newNode->value.sideOne = 0;

@@ -205,6 +205,12 @@
     <ClCompile Include="Sausage.h">
       <Filter>Source Files\App\Types</Filter>
     </ClCompile>
+    <ClCompile Include="Butcher.c">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="Butcher.h">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />
