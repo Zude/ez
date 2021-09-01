@@ -33,6 +33,9 @@
 *                                          Globals
 *********************************************************************************************************
 */
+extern volatile int currentTemp;
+extern int tempFac;
+extern int tempSetFac;
 
 void Griller(void* p_arg);
 
