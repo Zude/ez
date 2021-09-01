@@ -76,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..;$(ProjectDir)\..\..\..\..\BSP\Windows;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-IO;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-CPU;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-CPU\Win32\Visual_Studio;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-LIB;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uCOS-II\Ports\Win32\Visual Studio;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uCOS-II\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\..\Windows\Kernel\Echtzeitsysteme\VS;$(ProjectDir)\..;$(ProjectDir)\..\..\..\..\BSP\Windows;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-IO;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-CPU;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-CPU\Win32\Visual_Studio;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uC-LIB;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uCOS-II\Ports\Win32\Visual Studio;$(ProjectDir)\..\..\..\..\..\Micrium\Software\uCOS-II\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -160,7 +160,8 @@
     <ClCompile Include="..\..\..\..\BSP\Windows\bsp_cpu.c" />
     <ClCompile Include="..\app.c" />
     <ClCompile Include="..\app_hooks.c" />
-    <ClCompile Include="test.h" />
+    <ClCompile Include="InputListener.h" />
+    <ClCompile Include="InputListener.c" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />

@@ -8,7 +8,7 @@
 #include  <lib_mem.h>
 #include  <os.h>
 #include  "pc.h"
-#include  "test.h"
+#include  "InputListener.h"
 #include  "app_cfg.h"
 
 /*
@@ -217,9 +217,8 @@ static void Grillmeister(void* p_arg) {
 			int grillSize = getCount(grill);
 			// zufallszahl ermitteln
 
-			char hi = (char*)OSQAccept(msgqueue, &err);
-			printf("YO2: %c\n", hi);
-
+			
+			//SemFleischer2
 			if (grillSize > 0)
 			{
 				int index = rand() % ((grillSize - 1) + 1 - 0) + 0;
@@ -257,7 +256,7 @@ static void Physik(void* p_arg) {
 		while (key != 'o' && key != 'p') {
 
 	//	char hi = (char*)OSMboxQuery(MSG_box);
-			OSQPost(msgqueue, (void*)'c');
+		//	OSQPost(msgqueue, (void*)'c');
 		//printf("YO: %c\n", hi);
 			int count = 1;
 			WurstNode current = grill;
@@ -351,6 +350,8 @@ static void Fleischer(void* p_arg) {
 		// Warte das der User w drueckt um eine Wurst zu erzeugen
 		while (!PC_GetKey(&key) || key != 'w') {
 
+			char userInput = (char*)OSQAccept(msgQueueButcher, &err);
+			
 			
 
 			if (getCount(kuehlbox) == 0 && test) {
@@ -377,12 +378,10 @@ static void Fleischer(void* p_arg) {
 		OSSemPend(SemBox, 0, &err);
 		key = NULL;
 		OSTmrStop((OS_TMR*)MyTmr1, OS_TMR_OPT_NONE, NULL,(INT8U*)&err);
-		OSMboxPostOpt(MSG_box, (void*)'d', OS_POST_OPT_BROADCAST);
+	//	OSMboxPostOpt(MSG_box, (void*)'d', OS_POST_OPT_BROADCAST);
 		createWurst();
 		OSTimeDlyHMSM(0, 0, 1, 0);
 		OSSemPost(SemBox);
-
-
 
 	}
 }
@@ -417,7 +416,7 @@ int	main(void)
 	PartitionPtr = OSMemCreate(Partition, 100, 64, &partErr);
 
 	MSG_box = OSMboxCreate((void*)NULL);
-	msgqueue = OSQCreate(&MessageStorage, 10);
+	msgQueueButcher = OSQCreate(&messageStorageButcher, 10);
 
 	 //Fleischer initialisieren
 	wuersteInKuehlbox = 0;
@@ -433,6 +432,12 @@ int	main(void)
 		(void*)0,
 		&GrillmeisterTaskStk[GRILLMEISTER_TASK_STK_SIZE - 1],
 		GRILLMEISTER_TASK_PRIORITY);
+
+	// Listener initialisieren
+	OSTaskCreate(InputListener,
+		(void*)0,
+		&ListenerTaskStk[LISTENER_TASK_STK_SIZE - 1],
+		LISTENER_TASK_PRIORITY);
 
 	// Physik initialisieren
 	OSTaskCreate(Physik,

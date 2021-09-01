@@ -47,6 +47,9 @@
     <Filter Include="Source Files\BSP">
       <UniqueIdentifier>{7528adc3-504b-49c7-8dc1-fbe51adf92a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\App\Tasks">
+      <UniqueIdentifier>{606e8a4e-1ec4-47d9-952c-59f7a95bafd5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\cpu_cfg.h">
@@ -181,8 +184,11 @@
     <ClCompile Include="..\app_hooks.c">
       <Filter>Source Files\App</Filter>
     </ClCompile>
-    <ClCompile Include="test.h">
-      <Filter>Source Files\App</Filter>
+    <ClCompile Include="InputListener.h">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="InputListener.c">
+      <Filter>Source Files\App\Tasks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
