@@ -30,30 +30,16 @@
 *********************************************************************************************************
 */
 
+OS_STK	ButcherTaskStk[BUTCHER_TASK_STK_SIZE];
+OS_STK	GrillerTaskStk[GRILLER_TASK_STK_SIZE];
+OS_STK	PhysicsTaskStk[PHYSICS_TASK_STK_SIZE];
+OS_STK	FireFighterTaskStk[FIREFIGHTER_TASK_STK_SIZE];
 
-OS_STK	FleischerTaskStk[FLEISCHER_TASK_STK_SIZE];
-OS_STK	GrillmeisterTaskStk[GRILLMEISTER_TASK_STK_SIZE];
-OS_STK	PhysikTaskStk[PHYSIK_TASK_STK_SIZE];
-OS_STK	FeuerwehrTaskStk[FEUERWEHR_TASK_STK_SIZE];
-
-OS_EVENT* MSG_box;
-
-
-
-
- static  OS_EVENT* msgqueue;
- static  void* MessageStorage[100];
 /*
 *********************************************************************************************************
-*                                         FUNCTION PROTOTYPES
+*                                         FUNCTIONS
 *********************************************************************************************************
 */
-
-/* Counts no. of nodes in linked list */
-
-
-
-
 
 
 
@@ -91,20 +77,10 @@ int	main(void)
 	CPU_Init();                                                 /* Initialize the uC/CPU								*/
 	OSInit();                                                   /* Initialize uC/OS-II                                  */
 
-	// was das ?
-#if OS_TASK_NAME_EN > 0u
-	OSTaskNameSet(FLEISCHER_TASK_PRIORITY,
-		(INT8U*)"Creator Task",
-		&os_err);
-#endif
-
-	
-
 	// Speicher initialisieren, spaeter dynamisch aenderbar machen
 	INT8U partErr;
 	PartitionPtr = OSMemCreate(Partition, 100, 64, &partErr);
 
-	MSG_box = OSMboxCreate((void*)NULL);
 	msgQueueButcher = OSQCreate(&messageStorageButcher, 10);
 	msgQueueGriller = OSQCreate(&messageStorageGriller, 10);
 
@@ -114,14 +90,14 @@ int	main(void)
 	SemGrill = OSSemCreate(0);
 	OSTaskCreate(Fleischer,
 		(void*)0,
-		&FleischerTaskStk[FLEISCHER_TASK_STK_SIZE - 1],
-		FLEISCHER_TASK_PRIORITY);
+		&ButcherTaskStk[BUTCHER_TASK_STK_SIZE - 1],
+		BUTCHER_TASK_PRIORITY);
 
 	// Grillmeister initialisieren
 	OSTaskCreate(Griller,
 		(void*)0,
-		&GrillmeisterTaskStk[GRILLMEISTER_TASK_STK_SIZE - 1],
-		GRILLMEISTER_TASK_PRIORITY);
+		&GrillerTaskStk[GRILLER_TASK_STK_SIZE - 1],
+		GRILLER_TASK_PRIORITY);
 
 	// Listener initialisieren
 	OSTaskCreate(InputListener,
@@ -135,8 +111,8 @@ int	main(void)
 	// Feuerwehr initialisieren
 	OSTaskCreate(FireFighter,
 		(void*)0,
-		&FeuerwehrTaskStk[FEUERWEHR_TASK_STK_SIZE - 1],
-		FEUERWEHR_TASK_PRIORITY);
+		&FireFighterTaskStk[FIREFIGHTER_TASK_STK_SIZE - 1],
+		FIREFIGHTER_TASK_PRIORITY);
 
 	// Multitasking Starten
 	OSStart();

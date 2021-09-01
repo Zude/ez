@@ -22,30 +22,16 @@
 #include  <stdarg.h>
 #include  <stdio.h>
 
-
-/*
-*********************************************************************************************************
-*                                       MODULE ENABLE / DISABLE
-*********************************************************************************************************
-*/
-
-
 /*
 *********************************************************************************************************
 *                                           TASK PRIORITIES
 *********************************************************************************************************
 */
-#define FLEISCHER_TASK_PRIORITY 10
-#define FLEISCHER_TASK_STK_SIZE 512
+#define BUTCHER_TASK_PRIORITY 10
+#define PHYSICS_TASK_PRIORITY 9
+#define GRILLER_TASK_PRIORITY 11
+#define FIREFIGHTER_TASK_PRIORITY 11
 
-#define PHYSIK_TASK_PRIORITY 9
-#define PHYSIK_TASK_STK_SIZE 512
-
-#define GRILLMEISTER_TASK_PRIORITY 11
-#define GRILLMEISTER_TASK_STK_SIZE 512
-
-#define FEUERWEHR_TASK_PRIORITY 11
-#define FEUERWEHR_TASK_STK_SIZE 512
 
 /*
 *********************************************************************************************************
@@ -54,7 +40,10 @@
 *********************************************************************************************************
 */
 
-
+#define FIREFIGHTER_TASK_STK_SIZE 512
+#define GRILLER_TASK_STK_SIZE 512
+#define PHYSICS_TASK_STK_SIZE 512
+#define BUTCHER_TASK_STK_SIZE 512
 #define  OS_TASK_TMR_PRIO                                   (OS_LOWEST_PRIO - 2u)
 
 /*
