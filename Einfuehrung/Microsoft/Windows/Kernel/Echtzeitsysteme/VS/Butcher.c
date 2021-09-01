@@ -36,10 +36,9 @@ void createNewSausage() {
 
 	INT8U err;
 
-	OSSemPend(SemBox, 0, &err);
-	processError(&err);
+	processError(&err, "Create new Saus Pend Sem");
 	OSTmrStop((OS_TMR*)SausageTimer, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
-	processError(&err);
+	processError(&err, "Create new Saus Timer Stop");
 	createWurst(PartitionPtr);
 	OSSemPost(SemBox);
 }
@@ -57,11 +56,11 @@ void Butcher(void* p_arg) {
 
 	while (1) {
 
-		printCurrentState("ds");
+		//printCurrentState("ds");
 
 		// User Input abfangen
 		char userInput = (char*)OSQAccept(msgQueueButcher, &err);
-		processError(&err);
+		processError(&err, "Butcher OSQAccept");
 
 		// Wenn der Input korrekt ist, Wurst erzeugen. Sonst schauen ob Box Leer und ggf. Timer starten (60 Sekunden)
 		if (userInput == 'w') {
@@ -80,11 +79,11 @@ void Butcher(void* p_arg) {
 				(INT8U*)&err);
 
 			printCurrentState("Box leer, Timer startet.");
-			processError(&err);
+			processError(&err, "Butcher init Timer");
 
 			OSTmrStart((OS_TMR*)SausageTimer,
 				(INT8U*)&err);
-			processError(&err);
+			processError(&err, "Butcher start Timer");
 		}
 
 		OSTimeDlyHMSM(0, 0, 0, 100);

@@ -10,6 +10,8 @@
 #include  "InputListener.h"
 #include  "CoolingBox.h"
 #include  "Sausage.h"
+#include <stdlib.h>
+#include <string.h>
 
 /*
 *********************************************************************************************************
@@ -89,18 +91,44 @@ void printCurrentState(char* event) {
 
 }
 
-void processError(INT8U error) {
+char* concat(const char* s1, const char* s2) {
+	char* result = malloc(strlen(s1) + strlen(s2) + 1); // +1 for the null-terminator
+	// in real code you would check for errors in malloc here
+	strcpy_s(result, 500, s1, 50);
+	strcat_s(result, 500, s2, 50);
+	return result;
+}
+
+void processError(INT8U error, char* name) {
 
 	switch (error) {
-	case OS_ERR_PRIO_EXIST: printCurrentState("Error: Prioritaet bereits vorhanden."); break;
-	case OS_ERR_PRIO_INVALID: printCurrentState("Error: Prioritaet invalide."); break;
-	case OS_ERR_ILLEGAL_CREATE_RUN_TIME:printCurrentState("Error: Es sind bereits kritische Tasks gestartet."); break;
-	case OS_ERR_TASK_CREATE_ISR: printCurrentState(" Error: Es wurde versucht einen Task auf Interruptebene zu erstellen."); break;
-	case OS_ERR_TMR_INVALID_DLY: printCurrentState("Error: you specified an invalid delay."); break;
-	case OS_ERR_TMR_INVALID_PERIOD: printCurrentState("Error: you specified an invalid period"); break;
-	case OS_ERR_TMR_INVALID_OPT:printCurrentState("Error: you specified an invalid option"); break;
-	case OS_ERR_TMR_ISR: printCurrentState("Error: if the call was made from an ISR"); break;
-	case OS_ERR_TMR_NON_AVAIL: printCurrentState("Error: if there are no free timers from the timer pool"); break;
+	case OS_ERR_PRIO_EXIST: 
+		printCurrentState(concat("Error: Prioritaet bereits vorhanden.", name));
+		break;
+	case OS_ERR_PRIO_INVALID: 
+		printCurrentState(concat("Error: Prioritaet invalide.", name)); 
+		break;
+	case OS_ERR_ILLEGAL_CREATE_RUN_TIME:
+		printCurrentState(concat("Error: Es sind bereits kritische Tasks gestartet.", name)); 
+		break;
+	case OS_ERR_TASK_CREATE_ISR:
+		printCurrentState(concat("Error: Es wurde versucht einen Task auf Interruptebene zu erstellen.", name)); 
+		break;
+	case OS_ERR_TMR_INVALID_DLY: 
+		printCurrentState(concat("Error: you specified an invalid delay.", name)); 
+		break;
+	case OS_ERR_TMR_INVALID_PERIOD: 
+		printCurrentState(concat("Error: you specified an invalid period", name)); 
+		break;
+	case OS_ERR_TMR_INVALID_OPT:
+		printCurrentState(concat("Error: you specified an invalid option", name)); 
+		break;
+	case OS_ERR_TMR_ISR: 
+		printCurrentState(concat("Error: if the call was made from an ISR", name)); 
+		break;
+	case OS_ERR_TMR_NON_AVAIL: 
+		printCurrentState(concat("Error: if there are no free timers from the timer pool", name)); 
+		break;
 	default: break;
 	}
 }

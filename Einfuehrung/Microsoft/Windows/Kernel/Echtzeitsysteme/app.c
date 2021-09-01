@@ -63,7 +63,7 @@ int	main(void) {
 	msgQueueGriller = OSQCreate(&messageStorageGriller, 10);
 
 	// Semaphoren Initialisieren
-	SemFleischer = OSSemCreate(1);
+	SemFleischer = OSSemCreate(0);
 	SemBox = OSSemCreate(0);
 	SemGrill = OSSemCreate(0);
 

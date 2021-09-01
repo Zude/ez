@@ -73,7 +73,6 @@ void turningSausage(SausageNode sausage, SausageNode prev) {
 		if (userInput == 'g') {
 			OSSemPend(SemBox, 0, &err);
 			transferSausage(coolingBox, grill);
-			OSSemPost(SemBox);
 			printCurrentState("Griller nimmt Wurst und grillt sie.");
 			OSTimeDlyHMSM(0, 0, 5, 0);
 		}
@@ -100,7 +99,6 @@ void turningSausage(SausageNode sausage, SausageNode prev) {
 				printCurrentState("Griller kontrolliert Wurst.");
 				turningSausage(sausToCheck, prevSaus);
 				OSSemPost(SemGrill);
-
 				OSTimeDlyHMSM(0, 0, 0, 100);
 			}
 

@@ -20,6 +20,8 @@
 #include  "InputListener.h"
 #include  "CoolingBox.h"
 #include  "Sausage.h"
+#include <stdlib.h>
+#include <string.h>
 
 /*
 *********************************************************************************************************
@@ -39,7 +41,7 @@ void printCurrentState(char* event);
  *
  * 	Arguments : ProcessName Name des Prozesses, error der Fehler
  */
-void processError(INT8U error);
+void processError(INT8U error, char* name);
 
 /*
 *********************************************************************************************************

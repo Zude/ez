@@ -39,17 +39,24 @@ SausageNode createWurst() {
 
 void transferSausage()
 {
-	SausageNode transfer = coolingBox->next;
+	if (coolingBox->next != NULL)
+	{
+		SausageNode transfer = coolingBox->next;
 
-	coolingBox->next = grill;
-	grill = coolingBox;
+		coolingBox->next = grill;
+		grill = coolingBox;
 
-	coolingBox = transfer;
-	sausagesCountBox--;
-	sausagesCountGrill++;
-	printf("Grillmeister: Entnehme Wurst aus Box und plaziere auf Grill!\n");
-	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(coolingBox));
-	printf("Grill: Es sind %d Wuerste auf den Grill!\n", getCount(grill));
+		coolingBox = transfer;
+		sausagesCountBox--;
+		sausagesCountGrill++;
+	}
+	else {
+		coolingBox->next = grill;
+		grill = coolingBox;
+		coolingBox = NULL;
+		sausagesCountBox--;
+		sausagesCountGrill++;
+	}
 }
 
 int getCount(SausageNode head)
