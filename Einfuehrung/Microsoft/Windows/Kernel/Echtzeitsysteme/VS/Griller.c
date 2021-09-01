@@ -31,21 +31,21 @@ int tempSetFac = 10;
  *
  * 	Arguments : wurst Wurst die gewendet werden soll
  */
-void wurstWenden(SausageNode wurst) {
+void turningSausage(SausageNode sausage) {
 
-	switch (wurst->value.currentSide)
+	switch (sausage->value.currentSide)
 	{
 	case 1:
-		if (wurst->value.sideOne > 80) {
-			wurst->value.currentSide = 2;
+		if (sausage->value.sideOne > 80) {
+			sausage->value.currentSide = 2;
 			OSTimeDlyHMSM(0, 0, 5, 0);
 		} break;
-	case 2:if (wurst->value.sideTwo > 80) {
-		wurst->value.currentSide = 3;
+	case 2:if (sausage->value.sideTwo > 80) {
+		sausage->value.currentSide = 3;
 		OSTimeDlyHMSM(0, 0, 5, 0);
 	} break;
-	case 3: if (wurst->value.sideThree > 80) {
-		wurst->value.currentSide = 4;
+	case 3: if (sausage->value.sideThree > 80) {
+		sausage->value.currentSide = 4;
 		OSTimeDlyHMSM(0, 0, 5, 0);
 	} break;
 	default:
@@ -91,7 +91,7 @@ void wurstWenden(SausageNode wurst) {
 				SausageNode wurstToCheck = GetWurstAtIndex(index);
 
 				OSSemPend(SemGrill, 0, &err);
-				wurstWenden(wurstToCheck);
+				turningSausage(wurstToCheck);
 				OSSemPost(SemGrill);
 
 				OSTimeDlyHMSM(0, 0, 0, 100);
