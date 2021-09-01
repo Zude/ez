@@ -60,7 +60,7 @@ SausageNode createWurst(OS_MEM* partitionPtr);
 void transferSausage();
 SausageNode GetWurstAtIndex(int index);
 int getCount(SausageNode head);
-static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* parition);
+void deleteWurst(SausageNode prevNode, SausageNode toBeRemoved);
 
 
 /*

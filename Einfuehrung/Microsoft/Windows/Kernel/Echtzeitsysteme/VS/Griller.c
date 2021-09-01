@@ -32,25 +32,29 @@ int tempSetFac = 10;
  *
  * 	Arguments : wurst Wurst die gewendet werden soll
  */
-void turningSausage(SausageNode sausage) {
+void turningSausage(SausageNode sausage, SausageNode prev) {
 
 	switch (sausage->value.currentSide)
 	{
 	case 1:
 		if (sausage->value.sideOne > 80) {
 			sausage->value.currentSide = 2;
+			printCurrentState("Griller dreht Wurst auf Seite 2.");
 			OSTimeDlyHMSM(0, 0, 5, 0);
 		} break;
 	case 2:if (sausage->value.sideTwo > 80) {
 		sausage->value.currentSide = 3;
+		printCurrentState("Griller dreht Wurst auf Seite 3.");
 		OSTimeDlyHMSM(0, 0, 5, 0);
 	} break;
 	case 3: if (sausage->value.sideThree > 80) {
 		sausage->value.currentSide = 4;
+		printCurrentState("Griller dreht Wurst auf Seite 4.");
 		OSTimeDlyHMSM(0, 0, 5, 0);
 	} break;
 	default:
-		// delete
+		deleteWurst(prev, sausage);
+		printCurrentState("Griller nimmt fertige Wurst weg.");
 		OSTimeDlyHMSM(0, 0, 10, 0);
 		break;
 	}
@@ -70,30 +74,31 @@ void turningSausage(SausageNode sausage) {
 			OSSemPend(SemBox, 0, &err);
 			transferSausage(coolingBox, grill);
 			OSSemPost(SemBox);
-			printCurrentState("Fleischer erzeugt Wurst.");
+			printCurrentState("Griller nimmt Wurst und grillt sie.");
 			OSTimeDlyHMSM(0, 0, 5, 0);
 		}
 		else if (userInput == 'o') {
 			currentTemp += tempSetFac;
+			printCurrentState("Griller erhoeht Temperatur.");
 		}
 		else if (userInput == 'p') {
 			currentTemp -= tempSetFac;
+			printCurrentState("Griller verringert Temperatur.");
 		}
 		else {
-			// kontrolliere Wurst 
-			int grillSize = getCount(grill);
-			// zufallszahl ermitteln
 
-			//SemFleischer2
+			int grillSize = getCount(grill);
+
+			// Kontrolliere Zufalls Wurst, wenn min 1 vorhanden
 			if (grillSize > 0)
 			{
-
 				int index = rand() % ((grillSize - 1) + 1 - 0) + 0;
 
-				SausageNode wurstToCheck = GetWurstAtIndex(index);
-
 				OSSemPend(SemGrill, 0, &err);
-				turningSausage(wurstToCheck);
+				SausageNode sausToCheck = GetWurstAtIndex(index);
+				SausageNode prevSaus = GetWurstAtIndex(index-1);
+				printCurrentState("Griller kontrolliert Wurst.");
+				turningSausage(sausToCheck, prevSaus);
 				OSSemPost(SemGrill);
 
 				OSTimeDlyHMSM(0, 0, 0, 100);

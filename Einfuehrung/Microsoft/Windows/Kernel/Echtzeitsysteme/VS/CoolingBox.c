@@ -64,9 +64,12 @@ int getCount(SausageNode head)
 	return count;
 }
 
-SausageNode GetWurstAtIndex(int index)
-{
+SausageNode GetWurstAtIndex(int index) {
 
+	if (index < 0)
+	{
+		return NULL;
+	}
 	SausageNode current = grill;
 
 	// the index of the
@@ -81,12 +84,12 @@ SausageNode GetWurstAtIndex(int index)
 	}
 }
 
-static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* parition)
+void deleteWurst(SausageNode prevNode, SausageNode toBeRemoved)
 {
 	if (prevNode)
 		prevNode->next = toBeRemoved->next;
 
-	sausagesCountGrill++;
+	sausagesCountGrill--;
 
-	OSMemPut(parition, toBeRemoved);
+	OSMemPut(PartitionPtr, toBeRemoved);
 }
