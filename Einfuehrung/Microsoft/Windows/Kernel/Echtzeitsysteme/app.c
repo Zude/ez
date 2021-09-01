@@ -91,26 +91,7 @@ WurstNode GetWurstAtIndex(int index)
 	}
 }
 
-static WurstNode createWurst() {
 
-	INT8U err;
-
-	WurstNode newNode = OSMemGet(PartitionPtr, &err);;
-
-	newNode->next = kuehlbox;
-	newNode->value.seite1 = 0;
-	newNode->value.seite2 = 0;
-	newNode->value.seite3 = 0;
-	newNode->value.seite4 = 0;
-	newNode->value.aktuelleSeite = 1;
-
-	kuehlbox = newNode;
-
-	printf("Fleiwscher: Erzeuge neue Wurst!\n");
-	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(kuehlbox));
-
-	return kuehlbox;
-}
 
 static void DeleteWurst(WurstNode prevNode, WurstNode toBeRemoved, OS_MEM* parition)
 {
@@ -122,14 +103,14 @@ static void DeleteWurst(WurstNode prevNode, WurstNode toBeRemoved, OS_MEM* parit
 
 static void transferWurst()
 {
-	WurstNode transfer = kuehlbox->next;
+	WurstNode transfer = coolingBox->next;
 
-	kuehlbox->next = grill;
-	grill = kuehlbox;
+	coolingBox->next = grill;
+	grill = coolingBox;
 
-	kuehlbox = transfer;
+	coolingBox = transfer;
 	printf("Grillmeister: Entnehme Wurst aus Box und plaziere auf Grill!\n");
-	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(kuehlbox));
+	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(coolingBox));
 	printf("Grill: Es sind %d Wuerste auf den Grill!\n", getCount(grill));
 }
 
@@ -141,7 +122,7 @@ void MyTmrCallbackFnct1(void* p_arg)
 
 	OSTmrStop((OS_TMR*)SausageTimer, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
 
-	createWurst();
+	createWurst(PartitionPtr);
 	OSSemPost(SemBox);
 
 	OSTimeDlyHMSM(0, 0, 1, 0);
@@ -221,7 +202,7 @@ static void Grillmeister(void* p_arg) {
 	 
 		key = NULL;
 		OSSemPend(SemBox, 0, &err);
-		transferWurst(kuehlbox, grill);
+		transferWurst(coolingBox, grill);
 		
 		OSTimeDlyHMSM(0, 0, 5, 0);
 	}
@@ -331,7 +312,7 @@ static void Feuerwehr(void* p_arg) {
 static void Fleischer(void* p_arg) {
 
 	INT8U err;
-
+	 
 	while (1) {
 
 			// Input des Users per MQueue checken
@@ -341,11 +322,11 @@ static void Fleischer(void* p_arg) {
 			if (userInput == 'w') {
 				OSSemPend(SemBox, 0, &err);
 				OSTmrStop((OS_TMR*)SausageTimer, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
-				createWurst();
+				createWurst(PartitionPtr);
 				OSSemPost(SemBox);
 
 				OSTimeDlyHMSM(0, 0, 1, 0);
-			} else if (getCount(kuehlbox) == 0 && timerUsedFlag) {
+			} else if (getCount(coolingBox) == 0 && timerUsedFlag) {
 				timerUsedFlag = 0;
 				SausageTimer = OSTmrCreate((INT32U)15,
 					(INT32U)15,

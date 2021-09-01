@@ -31,7 +31,7 @@
 *                                          Globals
 *********************************************************************************************************
 */
-extern volatile WurstNode kuehlbox;
+extern volatile WurstNode coolingBox;
 
 /*
 *********************************************************************************************************
@@ -43,7 +43,7 @@ extern volatile WurstNode kuehlbox;
  *
  * 	Arguments : p_arg nicht verwendet
  */
-
+WurstNode createWurst(OS_MEM* partitionPtr);
 
 /*
 *********************************************************************************************************
