@@ -57,15 +57,13 @@ void Butcher(void* p_arg) {
 
 		printCurrentState("ds");
 
-		//PC_DispClrScr();
-		// Input des Users per MQueue checken
-
-
+		// User Input abfangen
 		char userInput = (char*)OSQAccept(msgQueueButcher, &err);
 
 		// Wenn der Input korrekt ist, Wurst erzeugen. Sonst schauen ob Box Leer und ggf. Timer starten (60 Sekunden)
 		if (userInput == 'w') {
 			createNewSausage();
+			printCurrentState("Fleischer erzeugt Wurst.");
 			OSTimeDlyHMSM(0, 0, 1, 0);
 		}
 		else if (getCount(coolingBox) == 0 && timerUsedFlag) {
@@ -77,6 +75,8 @@ void Butcher(void* p_arg) {
 				(void*)0,
 				(INT8U*)"Sausage Timer",
 				(INT8U*)&err);
+
+			printCurrentState("Box leer, Timer startet.");
 			OSTmrStart((OS_TMR*)SausageTimer,
 				(INT8U*)&err);
 		}

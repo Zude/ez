@@ -28,23 +28,6 @@ char* event6 = "";
 *                                       Functions
 *********************************************************************************************************
 */
-
-void processError(char ProcessName[], INT8U error) {
-
-	switch (error) {
-	case OS_ERR_PRIO_EXIST: printf("%s Error: Prioritaet bereits vorhanden.\n", ProcessName); break;
-	case OS_ERR_PRIO_INVALID: printf("%s Error: Prioritaet invalide.\n", ProcessName); break;
-	case OS_ERR_ILLEGAL_CREATE_RUN_TIME: printf("%s Error: Es sind bereits kritische Tasks gestartet.\n", ProcessName); break;
-	case OS_ERR_TASK_CREATE_ISR: printf("%s Error: Es wurde versucht einen Task auf Interruptebene zu erstellen.\n", ProcessName); break;
-	case OS_ERR_TMR_INVALID_DLY:printf("%s Error: you specified an invalid delay\n", ProcessName); break;
-	case OS_ERR_TMR_INVALID_PERIOD:printf("%s  Error: you specified an invalid period\n", ProcessName); break;
-	case OS_ERR_TMR_INVALID_OPT:printf("%s Error: you specified an invalid option\n", ProcessName); break;
-	case OS_ERR_TMR_ISR:printf("%s Error: if the call was made from an ISR\n", ProcessName); break;
-	case OS_ERR_TMR_NON_AVAIL:printf("%s  Error: if there are no free timers from the timer pool\n", ProcessName); break;
-	default: break;
-	}
-}
-
 void printCurrentState(char* event) {
 
 	event1 = event2;
@@ -104,4 +87,20 @@ void printCurrentState(char* event) {
 
 	}
 
+}
+
+void processError(char ProcessName[], INT8U error) {
+
+	switch (error) {
+	case OS_ERR_PRIO_EXIST: printCurrentState("Error: Prioritaet bereits vorhanden."); break;
+	case OS_ERR_PRIO_INVALID: printCurrentState("Error: Prioritaet invalide."); break;
+	case OS_ERR_ILLEGAL_CREATE_RUN_TIME:printCurrentState("Error: Es sind bereits kritische Tasks gestartet."); break;
+	case OS_ERR_TASK_CREATE_ISR: printCurrentState(" Error: Es wurde versucht einen Task auf Interruptebene zu erstellen."); break;
+	case OS_ERR_TMR_INVALID_DLY: printCurrentState("Error: you specified an invalid delay."); break;
+	case OS_ERR_TMR_INVALID_PERIOD: printCurrentState("Error: you specified an invalid period"); break;
+	case OS_ERR_TMR_INVALID_OPT:printCurrentState("Error: you specified an invalid option"); break;
+	case OS_ERR_TMR_ISR: printCurrentState("Error: if the call was made from an ISR"); break;
+	case OS_ERR_TMR_NON_AVAIL: printCurrentState("Error: if there are no free timers from the timer pool"); break;
+	default: break;
+	}
 }
