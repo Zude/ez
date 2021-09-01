@@ -65,3 +65,11 @@ SausageNode GetWurstAtIndex(int index)
 		current = current->next;
 	}
 }
+
+static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* parition)
+{
+	if (prevNode)
+		prevNode->next = toBeRemoved->next;
+
+	OSMemPut(parition, toBeRemoved);
+}

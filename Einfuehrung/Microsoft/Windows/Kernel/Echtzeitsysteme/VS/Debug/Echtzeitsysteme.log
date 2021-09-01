@@ -1,16 +1,16 @@
 ﻿  app.c
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(152,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(267,13): warning C4047: '=': 'volatile INT16S' differs in levels of indirection from 'void *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(201,8): warning C4101: 'err': unreferenced local variable
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(318,43): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(318,39): warning C4024: 'processError': different types for formal and actual parameter 2
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(321,44): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(321,40): warning C4024: 'processError': different types for formal and actual parameter 2
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(299,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(358,52): warning C4047: 'function': 'void **' differs in levels of indirection from 'void *(*)[100]'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(358,30): warning C4022: 'OSQCreate': pointer mismatch for actual parameter 1
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(359,52): warning C4047: 'function': 'void **' differs in levels of indirection from 'void *(*)[100]'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(359,30): warning C4022: 'OSQCreate': pointer mismatch for actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(146,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(261,13): warning C4047: '=': 'volatile INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(195,8): warning C4101: 'err': unreferenced local variable
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(312,43): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(312,39): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(315,44): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(315,40): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(293,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(352,52): warning C4047: 'function': 'void **' differs in levels of indirection from 'void *(*)[100]'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(352,30): warning C4022: 'OSQCreate': pointer mismatch for actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(353,52): warning C4047: 'function': 'void **' differs in levels of indirection from 'void *(*)[100]'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(353,30): warning C4022: 'OSQCreate': pointer mismatch for actual parameter 1
   CoolingBox.c
 C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\CoolingBox.c(22,63): warning C4013: 'getCount' undefined; assuming extern returning int
   Generating Code...

@@ -67,13 +67,7 @@ volatile int currentTemp = 150;
 
 
 
-static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* parition)
-{
-	if (prevNode)
-		prevNode->next = toBeRemoved->next;
 
-	OSMemPut(parition, toBeRemoved);
-}
 
 
 
