@@ -46,6 +46,9 @@ extern volatile SausageNode grill;
  */
 SausageNode createWurst(OS_MEM* partitionPtr);
 void transferWurst();
+SausageNode GetWurstAtIndex(int index);
+int getCount(SausageNode head);
+
 /*
 *********************************************************************************************************
 *                                             MODULE END

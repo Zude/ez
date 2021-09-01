@@ -63,34 +63,7 @@ volatile int currentTemp = 150;
 */
 
 /* Counts no. of nodes in linked list */
-int getCount(SausageNode head)
-{
-	int count = 0; // Initialize count
-	SausageNode current = head; // Initialize current
-	while (current != NULL)
-	{
-		count++;
-		current = current->next;
-	}
-	return count;
-}
 
-SausageNode GetWurstAtIndex(int index)
-{
-
-	SausageNode current = grill;
-
-	// the index of the
-	// node we're currently
-	// looking at
-	int count = 0;
-	while (current != NULL) {
-		if (count == index)
-			return current;
-		count++;
-		current = current->next;
-	}
-}
 
 
 
