@@ -31,27 +31,25 @@ OS_TMR* SausageTimer;
 *                                       Functions
 *********************************************************************************************************
 */
-void TimerCreateSausageCallback(void* p_arg) {
+
+void createNewSausage() {
+
 	INT8U err;
-	// Falls eine Wurst bereits erzeugt wird, warten
-	OSSemPend(SemFleischer, 0, &err);
 
+	OSSemPend(SemBox, 0, &err);
 	OSTmrStop((OS_TMR*)SausageTimer, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
-
 	createWurst(PartitionPtr);
 	OSSemPost(SemBox);
-
-	OSTimeDlyHMSM(0, 0, 1, 0);
-	OSSemPost(SemFleischer);
+}
+void TimerCreateSausageCallback(void* p_arg) {
+	
+	createNewSausage();
 	timerUsedFlag = 1;
-
+	printCurrentState("Timer erzeugt Wurst.");
+	OSTimeDlyHMSM(0, 0, 1, 0);
 }
 
-
- 
-
-
- void Butcher(void* p_arg) {
+void Butcher(void* p_arg) {
 
 	INT8U err;
 
@@ -67,11 +65,7 @@ void TimerCreateSausageCallback(void* p_arg) {
 
 		// Wenn der Input korrekt ist, Wurst erzeugen. Sonst schauen ob Box Leer und ggf. Timer starten (60 Sekunden)
 		if (userInput == 'w') {
-			OSSemPend(SemBox, 0, &err);
-			OSTmrStop((OS_TMR*)SausageTimer, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
-			createWurst(PartitionPtr);
-			OSSemPost(SemBox);
-
+			createNewSausage();
 			OSTimeDlyHMSM(0, 0, 1, 0);
 		}
 		else if (getCount(coolingBox) == 0 && timerUsedFlag) {
@@ -81,7 +75,7 @@ void TimerCreateSausageCallback(void* p_arg) {
 				(INT8U)OS_TMR_OPT_PERIODIC,
 				(OS_TMR_CALLBACK)TimerCreateSausageCallback,
 				(void*)0,
-				(INT8U*)"My Timer #1",
+				(INT8U*)"Sausage Timer",
 				(INT8U*)&err);
 			OSTmrStart((OS_TMR*)SausageTimer,
 				(INT8U*)&err);
