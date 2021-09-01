@@ -1,19 +1,19 @@
 #include  "Sausage.h"
 
-volatile WurstNode coolingBox;
+volatile SausageNode coolingBox;
 
-WurstNode createWurst(OS_MEM* partitionPtr) {
+SausageNode createWurst(OS_MEM* partitionPtr) {
 
 	INT8U err;
 
-	WurstNode newNode = OSMemGet(partitionPtr, &err);;
+	SausageNode newNode = OSMemGet(partitionPtr, &err);;
 
 	newNode->next = coolingBox;
-	newNode->value.seite1 = 0;
-	newNode->value.seite2 = 0;
-	newNode->value.seite3 = 0;
-	newNode->value.seite4 = 0;
-	newNode->value.aktuelleSeite = 1;
+	newNode->value.sideOne = 0;
+	newNode->value.sideTwo = 0;
+	newNode->value.sideThree = 0;
+	newNode->value.sideFour = 0;
+	newNode->value.currentSide = 1;
 
 	coolingBox = newNode;
 

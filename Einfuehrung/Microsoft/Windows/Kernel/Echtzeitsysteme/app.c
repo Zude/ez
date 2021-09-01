@@ -39,7 +39,7 @@ INT8U	Partition[100][32];
 OS_EVENT* MSG_box;
 
 
-volatile WurstNode grill;
+volatile SausageNode grill;
 
 OS_TMR  *SausageTimer;
 
@@ -62,10 +62,10 @@ volatile int currentTemp = 150;
 */
 
 /* Counts no. of nodes in linked list */
-int getCount(WurstNode head)
+int getCount(SausageNode head)
 {
 	int count = 0; // Initialize count
-	WurstNode current = head; // Initialize current
+	SausageNode current = head; // Initialize current
 	while (current != NULL)
 	{
 		count++;
@@ -74,10 +74,10 @@ int getCount(WurstNode head)
 	return count;
 }
 
-WurstNode GetWurstAtIndex(int index)
+SausageNode GetWurstAtIndex(int index)
 {
 
-	WurstNode current = grill;
+	SausageNode current = grill;
 
 	// the index of the
 	// node we're currently
@@ -93,7 +93,7 @@ WurstNode GetWurstAtIndex(int index)
 
 
 
-static void DeleteWurst(WurstNode prevNode, WurstNode toBeRemoved, OS_MEM* parition)
+static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* parition)
 {
 	if (prevNode)
 		prevNode->next = toBeRemoved->next;
@@ -103,7 +103,7 @@ static void DeleteWurst(WurstNode prevNode, WurstNode toBeRemoved, OS_MEM* parit
 
 static void transferWurst()
 {
-	WurstNode transfer = coolingBox->next;
+	SausageNode transfer = coolingBox->next;
 
 	coolingBox->next = grill;
 	grill = coolingBox;
@@ -149,19 +149,19 @@ static void processError(char ProcessName[], INT8U error) {
 	}
 }
 
-static void wurstWenden(WurstNode wurst) {
+static void wurstWenden(SausageNode wurst) {
 
-	switch (wurst->value.aktuelleSeite)
+	switch (wurst->value.currentSide)
 	{
 	case 1:
-		if (wurst->value.seite1 > 80) {
-			wurst->value.aktuelleSeite = 2;
+		if (wurst->value.sideOne > 80) {
+			wurst->value.currentSide = 2;
 		} break;
-	case 2:if (wurst->value.seite2 > 80) {
-		wurst->value.aktuelleSeite = 3;
+	case 2:if (wurst->value.sideTwo > 80) {
+		wurst->value.currentSide = 3;
 	} break;
-	case 3: if (wurst->value.seite3 > 80) {
-		wurst->value.aktuelleSeite = 4;
+	case 3: if (wurst->value.sideThree > 80) {
+		wurst->value.currentSide = 4;
 	} break;
 	default:
 		break;
@@ -180,31 +180,33 @@ static void Grillmeister(void* p_arg) {
 
 	while (1) {
 
+		// Input des Users per MQueue checken
+		char userInput = (char*)OSQAccept(msgQueueGriller, &err);
 
-		while (key != 'g') {
+		// Wenn der Input korrekt ist, Wurst erzeugen. Sonst schauen ob Box Leer und ggf. Timer starten (60 Sekunden)
+		if (userInput == 'g') {
+			OSSemPend(SemBox, 0, &err);
+			transferWurst(coolingBox, grill);
+			OSSemPost(SemBox);
+			OSTimeDlyHMSM(0, 0, 5, 0);
+		}
+		else {
 			// kontrolliere Wurst 
 			int grillSize = getCount(grill);
 			// zufallszahl ermitteln
 
-			
 			//SemFleischer2
 			if (grillSize > 0)
 			{
 				int index = rand() % ((grillSize - 1) + 1 - 0) + 0;
 
-				WurstNode wurstToCheck = GetWurstAtIndex(index);
+				SausageNode wurstToCheck = GetWurstAtIndex(index);
 				// drehen routine
 				wurstWenden(wurstToCheck);
 			}
-			
+
 			OSTimeDlyHMSM(0, 0, 0, 100);
 		}
-	 
-		key = NULL;
-		OSSemPend(SemBox, 0, &err);
-		transferWurst(coolingBox, grill);
-		
-		OSTimeDlyHMSM(0, 0, 5, 0);
 	}
 }
 
@@ -228,44 +230,44 @@ static void Physik(void* p_arg) {
 		//	OSQPost(msgqueue, (void*)'c');
 		//printf("YO: %c\n", hi);
 			int count = 1;
-			WurstNode current = grill;
+			SausageNode current = grill;
 
 			int temp = currentTemp / tempFac;
 
 		while (current != NULL) {
 
-			int aktuelleSeite;
+			int currentSide;
 			int braunung = 0;
 
 			// wende Physik an (temp 150 grad * factor)
 			
-			switch (current->value.aktuelleSeite)
+			switch (current->value.currentSide)
 			{
 			case 1:
-				aktuelleSeite = 1;
-				current->value.seite1 += temp;
-				braunung = current->value.seite1;
+				currentSide = 1;
+				current->value.sideOne += temp;
+				braunung = current->value.sideOne;
 				 break;
 			case 2:
-				aktuelleSeite = 2;
-				current->value.seite2 += temp;
-				braunung = current->value.seite2;
+				currentSide = 2;
+				current->value.sideTwo += temp;
+				braunung = current->value.sideTwo;
 			 break;
 			case 3: 
-				aktuelleSeite = 3;
-				current->value.seite3 += temp;
-				braunung = current->value.seite3; 
+				currentSide = 3;
+				current->value.sideThree += temp;
+				braunung = current->value.sideThree; 
 				break;
 			case 4:
-				aktuelleSeite = 4;
-				current->value.seite4 += temp;
-				braunung = current->value.seite4; break;
+				currentSide = 4;
+				current->value.sideFour += temp;
+				braunung = current->value.sideFour; break;
 			default:
-				aktuelleSeite = 0;
+				currentSide = 0;
 				break;
 			}
 
-			printf("Wurst %d, Seite %d ist zu %d gebraeunt! \n", count, aktuelleSeite, braunung);
+			printf("Wurst %d, Seite %d ist zu %d gebraeunt! \n", count, currentSide, braunung);
 			count++;
 
 			if (braunung > 100)
@@ -376,6 +378,7 @@ int	main(void)
 
 	MSG_box = OSMboxCreate((void*)NULL);
 	msgQueueButcher = OSQCreate(&messageStorageButcher, 10);
+	msgQueueGriller = OSQCreate(&messageStorageGriller, 10);
 
 	 //Fleischer initialisieren
 	SemFleischer = OSSemCreate(1);
@@ -398,10 +401,7 @@ int	main(void)
 		LISTENER_TASK_PRIORITY);
 
 	// Physik initialisieren
-	OSTaskCreate(Physik,
-		(void*)0,
-		&PhysikTaskStk[PHYSIK_TASK_STK_SIZE - 1],
-		PHYSIK_TASK_PRIORITY);
+
 
 	// Feuerwehr initialisieren
 	OSTaskCreate(Feuerwehr,

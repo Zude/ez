@@ -5,6 +5,10 @@
 
 OS_EVENT* msgQueueButcher;
 void* messageStorageButcher[100];
+
+OS_EVENT* msgQueueGriller;
+void* messageStorageGriller[100];
+
 OS_STK ListenerTaskStk[100];
 
 void InputListener(void* p_arg)  {
@@ -21,6 +25,9 @@ void InputListener(void* p_arg)  {
 		{
 		case 'w':
 			OSQPost(msgQueueButcher, (void*)'w');
+			break;
+		case 'g':
+			OSQPost(msgQueueGriller, (void*)'g');
 			break;
 		default:
 			break;

@@ -31,7 +31,7 @@
 *                                          Globals
 *********************************************************************************************************
 */
-extern volatile WurstNode coolingBox;
+extern volatile SausageNode coolingBox;
 
 /*
 *********************************************************************************************************
@@ -43,7 +43,7 @@ extern volatile WurstNode coolingBox;
  *
  * 	Arguments : p_arg nicht verwendet
  */
-WurstNode createWurst(OS_MEM* partitionPtr);
+SausageNode createWurst(OS_MEM* partitionPtr);
 
 /*
 *********************************************************************************************************

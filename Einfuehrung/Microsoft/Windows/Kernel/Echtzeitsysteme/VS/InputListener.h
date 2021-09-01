@@ -34,6 +34,10 @@
 */
  extern  OS_EVENT* msgQueueButcher;
  extern  void* messageStorageButcher[100];
+
+ extern  OS_EVENT* msgQueueGriller;
+ extern  void* messageStorageGriller[100];
+
  extern OS_STK	ListenerTaskStk[LISTENER_TASK_STK_SIZE];
 
 /*

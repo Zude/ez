@@ -23,20 +23,20 @@
 *                                          Defines
 *********************************************************************************************************
 */
-struct Wurst {
-	int aktuelleSeite;
-	int seite1;
-	int seite2;
-	int seite3;
-	int seite4;
+struct Sausage {
+	int currentSide;
+	int sideOne;
+	int sideTwo;
+	int sideThree;
+	int sideFour;
 };
 
 struct Node {
-	struct Wurst value;
+	struct Sausage value;
 	struct Node* next;
 };
 
-typedef struct Node* WurstNode;
+typedef struct Node* SausageNode;
 
 /*
 *********************************************************************************************************
