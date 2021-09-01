@@ -89,7 +89,7 @@ void printCurrentState(char* event) {
 
 }
 
-void processError(char ProcessName[], INT8U error) {
+void processError(INT8U error) {
 
 	switch (error) {
 	case OS_ERR_PRIO_EXIST: printCurrentState("Error: Prioritaet bereits vorhanden."); break;

@@ -39,7 +39,7 @@ void printCurrentState(char* event);
  *
  * 	Arguments : ProcessName Name des Prozesses, error der Fehler
  */
-void processError(char ProcessName[], INT8U error);
+void processError(INT8U error);
 
 /*
 *********************************************************************************************************
