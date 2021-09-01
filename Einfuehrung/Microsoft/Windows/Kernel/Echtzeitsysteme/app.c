@@ -36,12 +36,7 @@ OS_STK	FeuerwehrTaskStk[FEUERWEHR_TASK_STK_SIZE];
 
 OS_EVENT* MSG_box;
 
-volatile INT16S key;
 
-
-
-
- boolean entzuendet = 0;
 
 
  static  OS_EVENT* msgqueue;
@@ -93,7 +88,7 @@ static void Physik(void* p_arg) {
 
 	while (1) {
 
-		while (key != 'o' && key != 'p') {
+		while (1) {
 
 	//	char hi = (char*)OSMboxQuery(MSG_box);
 		//	OSQPost(msgqueue, (void*)'c');
@@ -148,14 +143,14 @@ static void Physik(void* p_arg) {
 		}
 		OSTimeDlyHMSM(0, 0, 1, 0);
 		}
-		if (key == 'o') {
+		if (1) {
 			currentTemp += tempSetFac;
 			printf("Temperatur um %d auf %d erhoeht.\n", tempSetFac, currentTemp);
 		} else {
 			currentTemp -= tempSetFac;
 			printf("Temperatur um %d auf %d verringert.\n", tempSetFac, currentTemp);
 		}
-		key = NULL; 
+
 		OSTimeDlyHMSM(0, 0, 0, 100);
 	}
 }

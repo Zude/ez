@@ -10,6 +10,8 @@ OS_EVENT* SemFleischer;
 OS_EVENT* SemBox;
 OS_EVENT* SemGrill;
 
+boolean entzuendet = 0;
+
 SausageNode createWurst() {
 
 	INT8U err;

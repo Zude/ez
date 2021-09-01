@@ -41,6 +41,8 @@ extern OS_EVENT* SemFleischer;
 extern OS_EVENT* SemBox;
 extern OS_EVENT* SemGrill;
 
+extern  boolean entzuendet;
+
 /*
 *********************************************************************************************************
 *                                          Methods
