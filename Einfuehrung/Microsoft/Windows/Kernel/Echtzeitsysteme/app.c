@@ -65,7 +65,7 @@ int	main(void) {
 	// Semaphoren Initialisieren
 	SemFleischer = OSSemCreate(0);
 	SemBox = OSSemCreate(0);
-	SemGrill = OSSemCreate(0);
+	SemGrill = OSSemCreate(1);
 
 	 //Fleischer initialisieren
 	OSTaskCreate(Butcher,

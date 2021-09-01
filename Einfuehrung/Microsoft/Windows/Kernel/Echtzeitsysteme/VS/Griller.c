@@ -68,10 +68,12 @@ void turningSausage(SausageNode sausage, SausageNode prev) {
 
 		// Input des Users per MQueue checken
 		char userInput = (char*)OSQAccept(msgQueueGriller, &err);
+		processError(&err, "Griller userInput");
 
 		// Wenn der Input korrekt ist, Wurst erzeugen. Sonst schauen ob Box Leer und ggf. Timer starten (60 Sekunden)
 		if (userInput == 'g') {
 			OSSemPend(SemBox, 0, &err);
+			processError(&err, "Griller userInput");
 			transferSausage(coolingBox, grill);
 			printCurrentState("Griller nimmt Wurst und grillt sie.");
 			OSTimeDlyHMSM(0, 0, 5, 0);
