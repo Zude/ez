@@ -35,17 +35,18 @@ typedef struct Node* WurstNode;
 *                                       LOCAL GLOBAL VARIABLES
 *********************************************************************************************************
 */
-OS_EVENT* SemMutex;
-OS_EVENT* SemKey;
 OS_EVENT* SemFleischer;
 OS_EVENT* SemBox;
 
 OS_STK	FleischerTaskStk[FLEISCHER_TASK_STK_SIZE];
-OS_STK	GrillmeisterTaskStk[FLEISCHER_TASK_STK_SIZE];
+OS_STK	GrillmeisterTaskStk[GRILLMEISTER_TASK_STK_SIZE];
 OS_STK	PhysikTaskStk[PHYSIK_TASK_STK_SIZE];
+OS_STK	FeuerwehrTaskStk[FEUERWEHR_TASK_STK_SIZE];
 
 OS_MEM* PartitionPtr;
 INT8U	Partition[100][32];
+
+OS_EVENT* MSG_box;
 
 volatile WurstNode kuehlbox;
 volatile WurstNode grill;
@@ -59,6 +60,8 @@ boolean test = 1;
 volatile int currentTemp = 150;
  int tempFac = 100;
  int tempSetFac = 10;
+
+ boolean entzuendet = 0;
 /*
 *********************************************************************************************************
 *                                         FUNCTION PROTOTYPES
@@ -201,13 +204,16 @@ static void Grillmeister(void* p_arg) {
 
 	INT8U err;
 
-
 	while (1) {
+
 
 		while (key != 'g') {
 			// kontrolliere Wurst 
 			int grillSize = getCount(grill);
 			// zufallszahl ermitteln
+
+			char hi = (char*)OSMboxAccept(MSG_box);
+			printf("YO2: %c\n", hi);
 
 			if (grillSize > 0)
 			{
@@ -243,10 +249,10 @@ static void Physik(void* p_arg) {
 
 	while (1) {
 
-
-
 		while (key != 'o' && key != 'p') {
-		
+
+		char hi = (char*)OSMboxAccept(MSG_box);
+		printf("YO: %c\n", hi);
 			int count = 1;
 			WurstNode current = grill;
 
@@ -287,6 +293,12 @@ static void Physik(void* p_arg) {
 
 			printf("Wurst %d, Seite %d ist zu %d gebraeunt! \n", count, aktuelleSeite, braunung);
 			count++;
+
+			if (braunung > 100)
+			{
+				entzuendet = 1;
+				printf("Achtung, der Grill brennt! \n");
+			}
 			current = current->next;
 		}
 		OSTimeDlyHMSM(0, 0, 1, 0);
@@ -303,7 +315,19 @@ static void Physik(void* p_arg) {
 	}
 }
 
+/*
+ *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
+ * 	es auf dem Bildschirm aus.
+ *
+ * 	Arguments : p_arg nicht verwendet
+ */
+static void Feuerwehr(void* p_arg) {
 
+	while (1) {
+		// check alle 60 s ob brennt
+		// wenn ja loesche alle wuerste weg
+	}
+}
 
 /*
  *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
@@ -320,6 +344,9 @@ static void Fleischer(void* p_arg) {
 
 		// Warte das der User w drueckt um eine Wurst zu erzeugen
 		while (!PC_GetKey(&key) || key != 'w') {
+
+			
+
 			if (getCount(kuehlbox) == 0 && test) {
 				test = 0;
 				// aendern
@@ -341,15 +368,15 @@ static void Fleischer(void* p_arg) {
 		}
 
 		// Falls eine Wurst bereits erzeugt wird, warten
-		OSSemPend(SemFleischer, 0, &err);
+		OSSemPend(SemBox, 0, &err);
 		key = NULL;
 		OSTmrStop((OS_TMR*)MyTmr1, OS_TMR_OPT_NONE, NULL,(INT8U*)&err);
-
+		OSMboxPostOpt(MSG_box, (void*)'d', OS_POST_OPT_BROADCAST);
 		createWurst();
+		OSTimeDlyHMSM(0, 0, 1, 0);
 		OSSemPost(SemBox);
 
-		OSTimeDlyHMSM(0, 0, 1, 0);
-		OSSemPost(SemFleischer);
+
 
 	}
 }
@@ -383,10 +410,11 @@ int	main(void)
 	INT8U partErr;
 	PartitionPtr = OSMemCreate(Partition, 100, 64, &partErr);
 
+	MSG_box = OSMboxCreate((void*)NULL);
+
 	 //Fleischer initialisieren
 	wuersteInKuehlbox = 0;
 	SemFleischer = OSSemCreate(1);
-	SemKey = OSSemCreate(1);
 	SemBox = OSSemCreate(0);
 	OSTaskCreate(Fleischer,
 		(void*)0,
@@ -405,6 +433,11 @@ int	main(void)
 		&PhysikTaskStk[PHYSIK_TASK_STK_SIZE - 1],
 		PHYSIK_TASK_PRIORITY);
 
+	// Feuerwehr initialisieren
+	OSTaskCreate(Feuerwehr,
+		(void*)0,
+		&FeuerwehrTaskStk[FEUERWEHR_TASK_STK_SIZE - 1],
+		FEUERWEHR_TASK_PRIORITY);
 
 	// Multitasking Starten
 	OSStart();

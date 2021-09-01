@@ -44,6 +44,8 @@
 #define GRILLMEISTER_TASK_PRIORITY 11
 #define GRILLMEISTER_TASK_STK_SIZE 512
 
+#define FEUERWEHR_TASK_PRIORITY 11
+#define FEUERWEHR_TASK_STK_SIZE 512
 
 /*
 *********************************************************************************************************
