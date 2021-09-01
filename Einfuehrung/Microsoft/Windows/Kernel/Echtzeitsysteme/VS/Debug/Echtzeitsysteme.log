@@ -1,3 +1,17 @@
-﻿  InputListener.c
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\InputListener.c(12,8): warning C4101: 'err': unreferenced local variable
+﻿  app.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(222,13): warning C4047: '=': 'volatile INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(306,13): warning C4047: '=': 'volatile INT16S' differs in levels of indirection from 'void *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(240,8): warning C4101: 'err': unreferenced local variable
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(357,43): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(357,39): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(360,44): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(360,40): warning C4024: 'processError': different types for formal and actual parameter 2
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(338,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(397,52): warning C4047: 'function': 'void **' differs in levels of indirection from 'void *(*)[100]'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(397,30): warning C4022: 'OSQCreate': pointer mismatch for actual parameter 1
+  CoolingBox.c
+  Generating Code...
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(92): warning C4715: 'GetWurstAtIndex': not all control paths return a value
+Debug\InputListener.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\CoolingBox.obj : warning LNK4042: object specified more than once; extras ignored
   Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe

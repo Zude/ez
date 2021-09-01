@@ -50,6 +50,12 @@
     <Filter Include="Source Files\App\Tasks">
       <UniqueIdentifier>{606e8a4e-1ec4-47d9-952c-59f7a95bafd5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\App\Container">
+      <UniqueIdentifier>{1881d51f-4b46-477c-82ff-101f3a3a88c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App\Types">
+      <UniqueIdentifier>{2a515af0-b4ec-4325-ba5e-7fe8a4531c12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\cpu_cfg.h">
@@ -189,6 +195,15 @@
     </ClCompile>
     <ClCompile Include="InputListener.c">
       <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="CoolingBox.c">
+      <Filter>Source Files\App\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="CoolingBox.h">
+      <Filter>Source Files\App\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="Sausage.h">
+      <Filter>Source Files\App\Types</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

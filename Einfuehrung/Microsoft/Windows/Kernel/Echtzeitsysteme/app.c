@@ -9,6 +9,8 @@
 #include  <os.h>
 #include  "pc.h"
 #include  "InputListener.h"
+#include  "CoolingBox.h"
+#include  "Sausage.h"
 #include  "app_cfg.h"
 
 /*
@@ -16,20 +18,7 @@
 *                                            LOCAL DEFINES
 *********************************************************************************************************
 */
-struct Wurst {
-	int aktuelleSeite;
-	int seite1;
-	int seite2;
-	int seite3;
-	int seite4;
-};
 
-struct Node {
-	struct Wurst value;
-	struct Node* next;
-};
-
-typedef struct Node* WurstNode;
 
 /*
 *********************************************************************************************************
@@ -49,15 +38,14 @@ INT8U	Partition[100][32];
 
 OS_EVENT* MSG_box;
 
-volatile WurstNode kuehlbox;
-volatile WurstNode grill;
-int wuersteInKuehlbox;
 
-OS_TMR  *MyTmr1;
+volatile WurstNode grill;
+
+OS_TMR  *SausageTimer;
 
 volatile INT16S key;
 
-boolean test = 1;
+boolean timerUsedFlag = 1;
 volatile int currentTemp = 150;
  int tempFac = 100;
  int tempSetFac = 10;
@@ -151,14 +139,14 @@ void MyTmrCallbackFnct1(void* p_arg)
 	// Falls eine Wurst bereits erzeugt wird, warten
 	OSSemPend(SemFleischer, 0, &err);
 
-	OSTmrStop((OS_TMR*)MyTmr1, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
+	OSTmrStop((OS_TMR*)SausageTimer, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
 
 	createWurst();
 	OSSemPost(SemBox);
 
 	OSTimeDlyHMSM(0, 0, 1, 0);
 	OSSemPost(SemFleischer);
-	test = 1;
+	timerUsedFlag = 1;
 
 }
 
@@ -344,21 +332,22 @@ static void Fleischer(void* p_arg) {
 
 	INT8U err;
 
-
 	while (1) {
 
-		// Warte das der User w drueckt um eine Wurst zu erzeugen
-		while (!PC_GetKey(&key) || key != 'w') {
-
+			// Input des Users per MQueue checken
 			char userInput = (char*)OSQAccept(msgQueueButcher, &err);
-			
-			
 
-			if (getCount(kuehlbox) == 0 && test) {
-				test = 0;
-				// aendern
-		// timer initialisierung auslagern ?
-				MyTmr1 = OSTmrCreate((INT32U)15,
+			// Wenn der Input korrekt ist, Wurst erzeugen. Sonst schauen ob Box Leer und ggf. Timer starten (60 Sekunden)
+			if (userInput == 'w') {
+				OSSemPend(SemBox, 0, &err);
+				OSTmrStop((OS_TMR*)SausageTimer, OS_TMR_OPT_NONE, NULL, (INT8U*)&err);
+				createWurst();
+				OSSemPost(SemBox);
+
+				OSTimeDlyHMSM(0, 0, 1, 0);
+			} else if (getCount(kuehlbox) == 0 && timerUsedFlag) {
+				timerUsedFlag = 0;
+				SausageTimer = OSTmrCreate((INT32U)15,
 					(INT32U)15,
 					(INT8U)OS_TMR_OPT_PERIODIC,
 					(OS_TMR_CALLBACK)MyTmrCallbackFnct1,
@@ -366,23 +355,12 @@ static void Fleischer(void* p_arg) {
 					(INT8U*)"My Timer #1",
 					(INT8U*)&err);
 				processError("TimerInit", (INT8U*)&err);
-
-				OSTmrStart((OS_TMR*)MyTmr1,
+				OSTmrStart((OS_TMR*)SausageTimer,
 					(INT8U*)&err);
 				processError("TimerStart", (INT8U*)&err);
 			}
+
 			OSTimeDlyHMSM(0, 0, 0, 100);
-		}
-
-		// Falls eine Wurst bereits erzeugt wird, warten
-		OSSemPend(SemBox, 0, &err);
-		key = NULL;
-		OSTmrStop((OS_TMR*)MyTmr1, OS_TMR_OPT_NONE, NULL,(INT8U*)&err);
-	//	OSMboxPostOpt(MSG_box, (void*)'d', OS_POST_OPT_BROADCAST);
-		createWurst();
-		OSTimeDlyHMSM(0, 0, 1, 0);
-		OSSemPost(SemBox);
-
 	}
 }
 
@@ -419,7 +397,6 @@ int	main(void)
 	msgQueueButcher = OSQCreate(&messageStorageButcher, 10);
 
 	 //Fleischer initialisieren
-	wuersteInKuehlbox = 0;
 	SemFleischer = OSSemCreate(1);
 	SemBox = OSSemCreate(0);
 	OSTaskCreate(Fleischer,

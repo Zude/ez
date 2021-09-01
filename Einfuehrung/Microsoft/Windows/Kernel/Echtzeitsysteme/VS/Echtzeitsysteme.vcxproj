@@ -162,6 +162,9 @@
     <ClCompile Include="..\app_hooks.c" />
     <ClCompile Include="InputListener.h" />
     <ClCompile Include="InputListener.c" />
+    <ClCompile Include="CoolingBox.c" />
+    <ClCompile Include="CoolingBox.h" />
+    <ClCompile Include="Sausage.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />
