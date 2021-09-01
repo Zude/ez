@@ -26,7 +26,6 @@
 *                                          Globals
 *********************************************************************************************************
 */
-extern OS_TMR* SausageTimer;
 extern boolean timerUsedFlag;
 
 /*
