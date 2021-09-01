@@ -1,10 +1,16 @@
 ﻿  Butcher.c
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(48,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(49,20): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(56,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(60,22): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(64,22): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(68,22): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(72,22): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(101,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(67,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(68,20): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(74,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(78,22): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(82,22): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(86,22): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(90,22): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(113,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
+Debug\InputListener.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\CoolingBox.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\Butcher.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\Griller.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\Physics.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\FireFighter.obj : warning LNK4042: object specified more than once; extras ignored
   Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe
