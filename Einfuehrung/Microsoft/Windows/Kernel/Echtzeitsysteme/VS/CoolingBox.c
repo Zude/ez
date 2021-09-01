@@ -6,6 +6,9 @@ INT8U	Partition[100][32];
 volatile SausageNode coolingBox;
 volatile SausageNode grill;
 
+volatile int sausagesCountBox = 0;
+volatile int sausagesCountGrill = 0;
+
 OS_EVENT* SemFleischer;
 OS_EVENT* SemBox;
 OS_EVENT* SemGrill;
@@ -19,14 +22,15 @@ SausageNode createWurst() {
 	SausageNode newNode = OSMemGet(PartitionPtr, &err);;
 
 	newNode->next = coolingBox;
-	newNode->value.sideOne = 0;
-	newNode->value.sideTwo = 0;
+	newNode->value.sideOne = 101;
+	newNode->value.sideTwo = 30;
 	newNode->value.sideThree = 0;
 	newNode->value.sideFour = 0;
 	newNode->value.currentSide = 1;
 
 	coolingBox = newNode;
 
+	sausagesCountBox++;
 	printf("Fleiwscher: Erzeuge neue Wurst!\n");
 	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(coolingBox));
 
@@ -41,6 +45,8 @@ void transferWurst()
 	grill = coolingBox;
 
 	coolingBox = transfer;
+	sausagesCountBox--;
+	sausagesCountGrill++;
 	printf("Grillmeister: Entnehme Wurst aus Box und plaziere auf Grill!\n");
 	printf("Kuehlbox: Es sind %d Wuerste in der Box!\n", getCount(coolingBox));
 	printf("Grill: Es sind %d Wuerste auf den Grill!\n", getCount(grill));
@@ -79,6 +85,8 @@ static void DeleteWurst(SausageNode prevNode, SausageNode toBeRemoved, OS_MEM* p
 {
 	if (prevNode)
 		prevNode->next = toBeRemoved->next;
+
+	sausagesCountGrill++;
 
 	OSMemPut(parition, toBeRemoved);
 }
