@@ -12,6 +12,7 @@
 #include  "CoolingBox.h"
 #include  "Sausage.h"
 #include  "Butcher.h"
+#include  "Griller.h"
 #include  "app_cfg.h"
 
 /*
@@ -32,8 +33,6 @@ OS_STK	FleischerTaskStk[FLEISCHER_TASK_STK_SIZE];
 OS_STK	GrillmeisterTaskStk[GRILLMEISTER_TASK_STK_SIZE];
 OS_STK	PhysikTaskStk[PHYSIK_TASK_STK_SIZE];
 OS_STK	FeuerwehrTaskStk[FEUERWEHR_TASK_STK_SIZE];
-
-
 
 OS_EVENT* MSG_box;
 

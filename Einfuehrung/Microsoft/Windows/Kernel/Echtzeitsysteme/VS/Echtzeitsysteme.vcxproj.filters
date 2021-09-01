@@ -211,6 +211,12 @@
     <ClCompile Include="Butcher.h">
       <Filter>Source Files\App\Tasks</Filter>
     </ClCompile>
+    <ClCompile Include="Griller.h">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="Griller.c">
+      <Filter>Source Files\App\Tasks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />
