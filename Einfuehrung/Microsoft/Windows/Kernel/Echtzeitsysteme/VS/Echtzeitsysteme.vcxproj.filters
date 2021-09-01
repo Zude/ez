@@ -229,6 +229,12 @@
     <ClCompile Include="FireFighter.c">
       <Filter>Source Files\App\Tasks</Filter>
     </ClCompile>
+    <ClCompile Include="Helper.c">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="Helper.h">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />

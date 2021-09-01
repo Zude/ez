@@ -173,6 +173,8 @@
     <ClCompile Include="Physics.h" />
     <ClCompile Include="FireFighter.h" />
     <ClCompile Include="FireFighter.c" />
+    <ClCompile Include="Helper.c" />
+    <ClCompile Include="Helper.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Echtzeitsysteme.rc" />
