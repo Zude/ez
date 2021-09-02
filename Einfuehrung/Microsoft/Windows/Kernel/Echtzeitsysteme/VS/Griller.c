@@ -90,6 +90,7 @@ void turningSausage(SausageNode sausage, SausageNode prev) {
 			OSMboxPend(mailboxGriller, 0, &err);
 			processError(&err, "Griller OSMbox Pend");
 			printCurrentState("Griller trinkt nicht mehr.");
+			OSTimeDlyHMSM(0, 0, 0, 100);
 		} else {
 
 			int grillSize = getCount(grill);
