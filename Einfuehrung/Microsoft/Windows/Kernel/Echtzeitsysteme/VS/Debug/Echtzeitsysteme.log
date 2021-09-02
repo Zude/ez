@@ -1,1 +1,47 @@
-﻿  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe
+﻿  app.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(62,52): warning C4047: 'function': 'void **' differs in levels of indirection from 'void *(*)[100]'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(62,30): warning C4022: 'OSQCreate': pointer mismatch for actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(63,52): warning C4047: 'function': 'void **' differs in levels of indirection from 'void *(*)[100]'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(63,30): warning C4022: 'OSQCreate': pointer mismatch for actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\app.c(45,14): warning C4101: 'os_err': unreferenced local variable
+  Butcher.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(39,19): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(39,15): warning C4024: 'processError': different types for formal and actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(41,19): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(41,15): warning C4024: 'processError': different types for formal and actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(63,20): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(63,16): warning C4024: 'processError': different types for formal and actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(82,21): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(82,17): warning C4024: 'processError': different types for formal and actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(86,21): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(86,17): warning C4024: 'processError': different types for formal and actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Butcher.c(62,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
+  CoolingBox.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\CoolingBox.c(35,63): warning C4013: 'getCount' undefined; assuming extern returning int
+  FireFighter.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\FireFighter.c(23,20): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\FireFighter.c(23,16): warning C4024: 'processError': different types for formal and actual parameter 1
+  Griller.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Griller.c(71,20): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Griller.c(71,16): warning C4024: 'processError': different types for formal and actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Griller.c(76,21): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Griller.c(76,17): warning C4024: 'processError': different types for formal and actual parameter 1
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Griller.c(70,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char *'
+  Helper.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(64,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(65,20): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(71,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(75,21): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(79,21): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(83,21): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(87,21): warning C4778: 'snprintf' : unterminated format string '%'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(97,28): warning C4020: 'strcpy_s': too many actual parameters
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(98,28): warning C4020: 'strcat_s': too many actual parameters
+  InputListener.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\InputListener.c(16,8): warning C4101: 'err': unreferenced local variable
+  Physics.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Physics.c(28,20): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Physics.c(28,16): warning C4024: 'processError': different types for formal and actual parameter 1
+  Generating Code...
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\CoolingBox.c(92): warning C4715: 'GetWurstAtIndex': not all control paths return a value
+  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe

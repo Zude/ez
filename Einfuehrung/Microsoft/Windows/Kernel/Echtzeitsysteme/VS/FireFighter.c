@@ -1,3 +1,8 @@
+/*
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*/
 #include  <cpu.h>
 #include  <lib_mem.h>
 #include  <os.h>
@@ -5,17 +10,30 @@
 #include  "InputListener.h"
 #include  "CoolingBox.h"
 #include  "Sausage.h"
+#include  "Helper.h"
 
 /*
- *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
- * 	es auf dem Bildschirm aus.
- *
- * 	Arguments : p_arg nicht verwendet
- */
+*********************************************************************************************************
+*                                            Functions
+*********************************************************************************************************
+*/
  void FireFighter(void* p_arg) {
 
+	 INT8U err;
+	 processError(&err, "Griller userInput");
+
 	while (1) {
-		// check alle 60 s ob brennt
-		// wenn ja loesche alle wuerste weg
+		printCurrentState("Feuerwehr kontrolliert Grill");
+		if (entzuendet)
+		{
+			// loesche all
+			OSSemPend(SemGrill, 0, &err);
+			printCurrentState("Feuerwehr loescht Grill!");
+			deleteAllOnGrill();
+			entzuendet = 0;
+			OSSemPost(SemGrill);
+		}
+
+		OSTimeDlyHMSM(0, 0, 60, 0);
 	}
 }

@@ -61,6 +61,7 @@ void transferSausage();
 SausageNode GetWurstAtIndex(int index);
 int getCount(SausageNode head);
 void deleteWurst(SausageNode prevNode, SausageNode toBeRemoved);
+void deleteAllOnGrill();
 
 
 /*

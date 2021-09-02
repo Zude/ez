@@ -100,3 +100,18 @@ void deleteWurst(SausageNode prevNode, SausageNode toBeRemoved)
 
 	OSMemPut(PartitionPtr, toBeRemoved);
 }
+
+void deleteAllOnGrill() {
+	 SausageNode current = grill;
+	 SausageNode next;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		OSMemPut(PartitionPtr, current);
+		current = next;
+		sausagesCountGrill--;
+	}
+
+	grill = NULL;
+}
