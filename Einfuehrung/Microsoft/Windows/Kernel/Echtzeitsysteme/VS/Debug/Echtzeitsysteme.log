@@ -1,19 +1,4 @@
-﻿  Helper.c
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(64,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(65,20): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(79,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(82,23): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(83,21): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(84,23): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(86,23): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(87,21): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(88,23): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(90,24): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(91,21): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(92,24): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(94,24): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(95,21): warning C4778: 'snprintf' : unterminated format string '%'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(96,24): warning C4267: 'function': conversion from 'size_t' to 'INT8U', possible loss of data
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(105,28): warning C4020: 'strcpy_s': too many actual parameters
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Helper.c(106,28): warning C4020: 'strcat_s': too many actual parameters
+﻿  FireFighter.c
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\FireFighter.c(23,20): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
+C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\FireFighter.c(23,16): warning C4024: 'processError': different types for formal and actual parameter 1
   Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe

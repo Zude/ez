@@ -27,10 +27,10 @@
 *                                           TASK PRIORITIES
 *********************************************************************************************************
 */
-#define BUTCHER_TASK_PRIORITY 10
+#define BUTCHER_TASK_PRIORITY 12
 #define PHYSICS_TASK_PRIORITY 9
 #define GRILLER_TASK_PRIORITY 11
-#define FIREFIGHTER_TASK_PRIORITY 11
+#define FIREFIGHTER_TASK_PRIORITY 10
 
 
 /*

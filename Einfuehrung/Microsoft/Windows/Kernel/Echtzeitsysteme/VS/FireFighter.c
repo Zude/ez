@@ -23,15 +23,16 @@
 	 processError(&err, "Griller userInput");
 
 	while (1) {
+		OSSemPend(SemGrill, 0, &err);
 		printCurrentState("Feuerwehr kontrolliert Grill");
-		if (entzuendet) {
-			OSSemPend(SemGrill, 0, &err);
-			printCurrentState("Feuerwehr loescht Grill!");
-			deleteAllOnGrill();
-			entzuendet = 0;
-			OSSemPost(SemGrill);
-		}
 
-		OSTimeDlyHMSM(0, 0, 60, 0);
+		if (entzuendet) {
+			deleteAllOnGrill();
+			printCurrentState("Feuerwehr loescht Grill!");
+			entzuendet = 0;
+			
+		}
+		OSSemPost(SemGrill);
+		OSTimeDlyHMSM(0, 0, 5, 0);
 	}
 }

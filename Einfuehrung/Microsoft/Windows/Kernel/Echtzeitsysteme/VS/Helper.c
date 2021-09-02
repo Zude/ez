@@ -72,8 +72,7 @@ void printCurrentState(char* event) {
 	snprintf(buf, 30, "Anzahl Wurst: %d.", sausagesCountGrill);
 	PC_DispStr(10, 17, buf, 4);
 
-	if (entzuendet)
-	{
+	if (entzuendet) {
 		PC_DispStr(5, 18, "GRILL BRENNT! GRILL BRENNT!", 9);
 	}
 	for (size_t i = 0; i < sausagesCountGrill; i++) {
