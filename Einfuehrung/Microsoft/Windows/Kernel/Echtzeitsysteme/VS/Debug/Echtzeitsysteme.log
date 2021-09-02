@@ -1,11 +1,1 @@
-﻿  Physics.c
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Physics.c(28,20): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Physics.c(28,16): warning C4024: 'processError': different types for formal and actual parameter 1
-Debug\InputListener.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\CoolingBox.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Butcher.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Griller.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Physics.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\FireFighter.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\Helper.obj : warning LNK4042: object specified more than once; extras ignored
-  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe
+﻿  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe
