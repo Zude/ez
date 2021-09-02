@@ -62,6 +62,10 @@ int	main(void) {
 	msgQueueButcher = OSQCreate(&messageStorageButcher, 10);
 	msgQueueGriller = OSQCreate(&messageStorageGriller, 10);
 
+	// Mailboxes Initialisieren
+	mailboxGriller = OSMboxCreate(NULL);
+	mailboxButcher = OSMboxCreate(NULL);
+
 	// Semaphoren Initialisieren
 	SemFleischer = OSSemCreate(0);
 	SemBox = OSSemCreate(0);

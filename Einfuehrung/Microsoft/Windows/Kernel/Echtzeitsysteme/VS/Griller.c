@@ -85,8 +85,12 @@ void turningSausage(SausageNode sausage, SausageNode prev) {
 		else if (userInput == 'p') {
 			currentTemp -= tempSetFac;
 			printCurrentState("Griller verringert Temperatur.");
-		}
-		else {
+		} else if (userInput == 'h') {
+			printCurrentState("Grillertrinkt biet.");
+			OSMboxPend(mailboxGriller, 0, &err);
+			processError(&err, "Griller OSMbox Pend");
+			printCurrentState("Griller trinkt nicht mehr.");
+		} else {
 
 			int grillSize = getCount(grill);
 

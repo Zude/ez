@@ -9,6 +9,9 @@ void* messageStorageButcher[100];
 OS_EVENT* msgQueueGriller;
 void* messageStorageGriller[100];
 
+OS_EVENT* mailboxGriller;
+OS_EVENT* mailboxButcher;
+
 OS_STK ListenerTaskStk[100];
 
 void InputListener(void* p_arg)  {
@@ -34,6 +37,18 @@ void InputListener(void* p_arg)  {
 			break;
 		case 'p':
 			OSQPost(msgQueueGriller, (void*)'p');
+			break;
+		case 'e':
+			OSQPost(msgQueueButcher, (void*)'e');
+			break;
+		case 'h':
+			OSQPost(msgQueueGriller, (void*)'h');
+			break;
+		case 'r':
+			OSMboxPost(mailboxButcher, (void*)'r');
+			break;
+		case 'j':
+			OSMboxPost(mailboxGriller, (void*)'j');
 			break;
 		default:
 			break;

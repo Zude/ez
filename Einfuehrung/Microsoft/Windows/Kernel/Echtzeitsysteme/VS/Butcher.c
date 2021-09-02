@@ -68,6 +68,13 @@ void Butcher(void* p_arg) {
 			printCurrentState("Fleischer erzeugt Wurst.");
 			OSTimeDlyHMSM(0, 0, 1, 0);
 		}
+		else if (userInput == 'e') {
+			printCurrentState("Schlachter trinkt bier.");
+			OSMboxPend(mailboxButcher, 0, &err);
+			processError(&err, "Schlachter OSMbox Pend");
+			printCurrentState("Schlachter trinkt nicht mehr.");
+		}
+		
 		else if (getCount(coolingBox) == 0 && timerUsedFlag) {
 			timerUsedFlag = 0;
 			SausageTimer = OSTmrCreate((INT32U)15,

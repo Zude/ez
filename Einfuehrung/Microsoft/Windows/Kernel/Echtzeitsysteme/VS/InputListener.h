@@ -40,6 +40,9 @@
 
  extern OS_STK	ListenerTaskStk[LISTENER_TASK_STK_SIZE];
 
+ extern OS_EVENT* mailboxGriller;
+ extern OS_EVENT* mailboxButcher;
+
 /*
 *********************************************************************************************************
 *                                          Methods

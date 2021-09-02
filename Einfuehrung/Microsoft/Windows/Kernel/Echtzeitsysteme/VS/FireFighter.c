@@ -24,9 +24,7 @@
 
 	while (1) {
 		printCurrentState("Feuerwehr kontrolliert Grill");
-		if (entzuendet)
-		{
-			// loesche all
+		if (entzuendet) {
 			OSSemPend(SemGrill, 0, &err);
 			printCurrentState("Feuerwehr loescht Grill!");
 			deleteAllOnGrill();
