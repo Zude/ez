@@ -26,10 +26,10 @@ SausageNode createWurst() {
 	SausageNode newNode = OSMemGet(PartitionPtr, &err);;
 
 	newNode->next = coolingBox;
-	newNode->value.sideOne = 101;
-	newNode->value.sideTwo = 30;
-	newNode->value.sideThree = 0;
-	newNode->value.sideFour = 0;
+	newNode->value.sideOne = 80;
+	newNode->value.sideTwo = 80;
+	newNode->value.sideThree = 80;
+	newNode->value.sideFour = 80;
 	newNode->value.currentSide = 1;
 
 	coolingBox = newNode;

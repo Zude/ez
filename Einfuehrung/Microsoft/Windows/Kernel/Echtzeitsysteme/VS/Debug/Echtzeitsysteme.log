@@ -1,4 +1,1 @@
-﻿  FireFighter.c
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\FireFighter.c(23,20): warning C4047: 'function': 'INT8U' differs in levels of indirection from 'INT8U *'
-C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\FireFighter.c(23,16): warning C4024: 'processError': different types for formal and actual parameter 1
-  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe
+﻿  Echtzeitsysteme.vcxproj -> C:\Users\alex9\Desktop\Github\ez\Einfuehrung\Microsoft\Windows\Kernel\Echtzeitsysteme\VS\Debug\Echtzeitsysteme.exe
