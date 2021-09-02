@@ -1,3 +1,8 @@
+/*
+*********************************************************************************************************
+*                                            INCLUDE FILES
+*********************************************************************************************************
+*/
 #include  <cpu.h>
 #include  <lib_mem.h>
 #include  <os.h>
@@ -6,83 +11,66 @@
 #include  "CoolingBox.h"
 #include  "Sausage.h"
 #include  "Griller.h"
+#include  "Helper.h"
 
 /*
- *	Der Erzeugertask "erzeugt" bei jedem Tastendruck ein Zeichen und gibt
- * 	es auf dem Bildschirm aus.
- *
- * 	Arguments : p_arg nicht verwendet
- */
+*********************************************************************************************************
+*                                            Functions
+*********************************************************************************************************
+*/
 void Physics(void* p_arg) {
 
 	INT8U err;
 
 	while (1) {
 
-		while (1) {
-
-			//	char hi = (char*)OSMboxQuery(MSG_box);
-				//	OSQPost(msgqueue, (void*)'c');
-				//printf("YO: %c\n", hi);
+		OSSemPend(SemGrill, 0, &err);
+		processError(&err, "Physics pend");
 			int count = 1;
 			SausageNode current = grill;
-
 			int temp = currentTemp / tempFac;
 
 			while (current != NULL) {
 
 				int currentSide;
-				int braunung = 0;
-
-				// wende Physik an (temp 150 grad * factor)
+				int cooked = 0;
 
 				switch (current->value.currentSide)
 				{
 				case 1:
 					currentSide = 1;
 					current->value.sideOne += temp;
-					braunung = current->value.sideOne;
+					cooked = current->value.sideOne;
 					break;
 				case 2:
 					currentSide = 2;
 					current->value.sideTwo += temp;
-					braunung = current->value.sideTwo;
+					cooked = current->value.sideTwo;
 					break;
 				case 3:
 					currentSide = 3;
 					current->value.sideThree += temp;
-					braunung = current->value.sideThree;
+					cooked = current->value.sideThree;
 					break;
 				case 4:
 					currentSide = 4;
 					current->value.sideFour += temp;
-					braunung = current->value.sideFour; break;
+					cooked = current->value.sideFour; break;
 				default:
 					currentSide = 0;
 					break;
 				}
 
-				printf("Wurst %d, Seite %d ist zu %d gebraeunt! \n", count, currentSide, braunung);
 				count++;
 
-				if (braunung > 100)
+				if (cooked > 100)
 				{
 					entzuendet = 1;
-					printf("Achtung, der Grill brennt! \n");
+					printCurrentState("ACHTUNG! Grill hat sich entzündet!.");
 				}
 				current = current->next;
 			}
-			OSTimeDlyHMSM(0, 0, 1, 0);
-		}
-		if (1) {
-			currentTemp += tempSetFac;
-			printf("Temperatur um %d auf %d erhoeht.\n", tempSetFac, currentTemp);
-		}
-		else {
-			currentTemp -= tempSetFac;
-			printf("Temperatur um %d auf %d verringert.\n", tempSetFac, currentTemp);
-		}
-
-		OSTimeDlyHMSM(0, 0, 0, 100);
+			OSSemPost(SemGrill);
+			OSTimeDlyHMSM(0, 0, 5, 0);
 	}
 }

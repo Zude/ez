@@ -86,7 +86,10 @@ int	main(void) {
 		LISTENER_TASK_PRIORITY);
 
 	// Physik initialisieren
-
+	OSTaskCreate(Physics,
+		(void*)0,
+		&PhysicsTaskStk[PHYSICS_TASK_STK_SIZE - 1],
+		PHYSICS_TASK_PRIORITY);
 
 	// Feuerwehr initialisieren
 	OSTaskCreate(FireFighter,
