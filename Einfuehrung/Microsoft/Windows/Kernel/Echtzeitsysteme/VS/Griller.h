@@ -22,15 +22,6 @@
 #include  "Sausage.h"
 
 /*
-*********************************************************************************************************
-*                                          Globals
-*********************************************************************************************************
-*/
-extern volatile int currentTemp;
-extern int tempFac;
-extern int tempSetFac;
-
-/*
  *	Griller Task, welcher Wuerste grillt
  *
  * 	Arguments : p_arg nicht verwendet

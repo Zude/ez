@@ -46,6 +46,10 @@ extern OS_EVENT* SemGrill;
 
 extern  boolean entzuendet;
 
+extern volatile int currentTemp;
+extern int tempFac;
+extern int tempSetFac;
+
 /*
 *********************************************************************************************************
 *                                          Methods
@@ -62,6 +66,7 @@ SausageNode GetWurstAtIndex(int index);
 int getCount(SausageNode head);
 void deleteWurst(SausageNode prevNode, SausageNode toBeRemoved);
 void deleteAllOnGrill();
+
 
 
 /*

@@ -13,6 +13,10 @@ OS_EVENT* SemFleischer;
 OS_EVENT* SemBox;
 OS_EVENT* SemGrill;
 
+volatile int currentTemp = 150;
+int tempFac = 100;
+int tempSetFac = 10;
+
 boolean entzuendet = 0;
 
 SausageNode createWurst() {

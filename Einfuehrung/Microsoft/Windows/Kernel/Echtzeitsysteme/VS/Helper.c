@@ -66,26 +66,34 @@ void printCurrentState(char* event) {
 	}
 	PC_DispStr(0, 13, "##############################################################", 3);
 	PC_DispStr(0, 14, "##############################################################", 4);
-	PC_DispStr(0, 15, "Grill", 4);
+	PC_DispStr(15, 15, "Grill", 4);
+	snprintf(buf, 30, "Aktuelle Temperatur: %d Grad.", currentTemp);
+	PC_DispStr(10, 16,buf, 4);
+	snprintf(buf, 30, "Anzahl Wurst: %d.", sausagesCountGrill);
+	PC_DispStr(10, 17, buf, 4);
 
+	if (entzuendet)
+	{
+		PC_DispStr(5, 18, "GRILL BRENNT! GRILL BRENNT!", 9);
+	}
 	for (size_t i = 0; i < sausagesCountGrill; i++) {
 
 		SausageNode currentSaus = GetWurstAtIndex(sausagesCountGrill);
-		PC_DispStr(0, 16, "|", 4);
+		PC_DispStr(0, 19 + i, "|", 4);
 		snprintf(buf, 30, "%d%", currentSaus->value.sideOne);
-		PC_DispStr(1, 16, buf, 4);
+		PC_DispStr(1, 19 + i, buf, 4);
 
-		PC_DispStr(6, 16, "|", 4);
+		PC_DispStr(6, 19 + i, "|", 4);
 		snprintf(buf, 30, "%d%", currentSaus->value.sideTwo);
-		PC_DispStr(7, 16, buf, 4);
+		PC_DispStr(7, 19 + i, buf, 4);
 
-		PC_DispStr(12, 16, "|", 4);
+		PC_DispStr(12, 19 + i, "|", 4);
 		snprintf(buf, 30, "%d%", currentSaus->value.sideThree);
-		PC_DispStr(13, 16, buf, 4);
+		PC_DispStr(13, 19 + i, buf, 4);
 
-		PC_DispStr(18, 16, "|", 4);
+		PC_DispStr(18, 19 + i, "|", 4);
 		snprintf(buf, 30, "%d%", currentSaus->value.sideFour);
-		PC_DispStr(19, 16, buf, 4);
+		PC_DispStr(19, 19 + i, buf, 4);
 
 	}
 
